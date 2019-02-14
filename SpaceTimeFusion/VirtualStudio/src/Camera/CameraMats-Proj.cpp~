@@ -1,0 +1,79 @@
+#include "CameraMats.h"
+#include <float.h>
+#include <math.h>
+
+void CameraMats::projXYZtoUV(const CVector3 &xyzCoord, CVector2 &uvCoord) const
+{
+	ENSURE(this->interMatsComputed);
+
+	CVector4 xyzPT(xyzCoord[0], xyzCoord[1], xyzCoord[2], 1.0);	
+	CVector4 projPT = this->projMat * xyzPT;	
+	
+	ENSURE(projPT[2] != 0.0);
+	uvCoord[0] = projPT[0] / projPT[2];
+	uvCoord[1] = projPT[1] / projPT[2];
+}
+
+
+void CameraMats::projUVZtoXYZ(const CVector3 &uvzCoord, CVector3 &xyzCoord) const
+{
+	ENSURE(this->interMatsComputed == true);
+
+	CVector3 imgCoord(uvzCoord[0], uvzCoord[1], 1.0);
+
+	CVector3 rayDirc = this->rotMatInv * (this->intrinsicMatInv * imgCoord);
+
+	//cameraCoord + t*rayDirc = xyzCoord such that z = w
+	//solve for t where z = w
+	double t = (uvzCoord[2] - this->cameraCoord[2]) / rayDirc[2];	
+	ENSURE(t >= 0);
+
+	xyzCoord = this->cameraCoord + (rayDirc * t);
+	ENSURE(fabs(xyzCoord[2] - uvzCoord[2]) <= 0.00001); //ensure w = z
+}
+
+
+CVector3 CameraMats::transformCoordSys(CVector3 &xyzCoord) const
+{
+	ENSURE(this->interMatsComputed == true);	
+	CVector3 newXYZCoord = (this->rotMat * xyzCoord) + this->transVec;
+	return newXYZCoord;
+}
+
+
+CTransform3x3 CameraMats::GenerateFMatrix(CameraMats neighCamMats) const
+{
+	//neighCamMats.Dump();
+
+	neighCamMats.Recenter(*this);
+
+	//neighCamMats.Dump();
+	//exit(0);
+
+	CTransform3x3 k1 = this->intrinsicMat;
+	k1[0][2] = 0.0;
+	k1[1][2] = 0.0;
+
+	CTransform3x3 k2 = neighCamMats.intrinsicMat;
+	k2[0][2] = 0.0;
+	k2[1][2] = 0.0;
+
+	CTransform3x3 transCross = CTransform3x3::Null();
+	transCross[0][1] = -neighCamMats.transVec[2];
+	transCross[1][0] =  neighCamMats.transVec[2];
+	transCross[0][2] =  neighCamMats.transVec[1];
+	transCross[2][0] = -neighCamMats.transVec[1];
+	transCross[1][2] = -neighCamMats.transVec[0];
+	transCross[2][1] =  neighCamMats.transVec[0];
+
+	CTransform3x3 fmatrix;
+	//fmatrix = neighCamMats.rotMat * this->intrinsicMat.Inverse();
+	//fmatrix = transCross * fmatrix; 
+	//fmatrix = neighCamMats.intrinsicMat.Inverse() * fmatrix; 
+
+	fmatrix = neighCamMats.rotMat * k1.Inverse();
+	fmatrix = transCross * fmatrix; 
+	fmatrix = k2.Inverse() * fmatrix; 
+
+	return fmatrix;
+}

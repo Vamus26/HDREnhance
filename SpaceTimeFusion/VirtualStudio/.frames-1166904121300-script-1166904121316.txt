@@ -1,0 +1,4 @@
+rm /projects/null/grail54/pro/VirtualStudio2/VirtualStudio/.frames-1166904121300-script-1166904121316.txt
+cd /projects/null/grail54/pro/VirtualStudio2/VirtualStudio
+source /homes/sgi/pro/.bashrc
+ls

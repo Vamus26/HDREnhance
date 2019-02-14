@@ -1,0 +1,104 @@
+#ifndef __TRANSFORM_3X3_H__
+#define __TRANSFORM_3X3_H__
+
+#include "Definitions.h"
+#include <fstream>
+
+template <class T>
+class Vector3;
+
+template <class T>
+class Transform3x3
+{
+public:
+    Transform3x3();                          // default constructor (identity)	
+    static Transform3x3<T> Translation(T tx, T ty);
+	static Transform3x3<T> Scale(T sx, T sy);
+    static Transform3x3<T> Rotation(T degrees);
+    static Transform3x3<T> Rotation_X(T rads);
+    static Transform3x3<T> Rotation_Y(T rads);
+    static Transform3x3<T> Rotation_Z(T rads);
+	Transform3x3<T> Transpose(void) const;      // matrix transpose
+    Transform3x3<T> Inverse(void) const;              // matrix inverse
+	Transform3x3<T> operator*(T d);
+	Vector3<T> operator*(const Vector3<T> &v) const;
+    Transform3x3<T> operator*(const Transform3x3<T> &m) const;
+	Transform3x3<T> operator+(const Transform3x3<T> &m) const;
+	bool operator==(const Transform3x3<T> &m) const;
+    T* operator[](int i);                // access the elements
+    const T* operator[](int i) const;    // access the elements
+
+	static Transform3x3<T> Identity();
+	static Transform3x3<T> Null();
+
+	void Dump() const;
+	void DumpSci() const;
+
+	void Write(ofstream &outStream) const;
+	void Read(ifstream &inStream);
+
+private:
+    T m_array[3][3];                     // data array
+
+	void exchangeRows(int row1, int row2);
+	void scaleRow(int iRow, T scale);
+	void addScaledRow(int iSrc, int iTarget, T scale);
+};
+
+template <class T>
+inline T* Transform3x3<T>::operator[](int i)
+{
+    return this->m_array[i];
+}
+
+template <class T>
+inline const T* Transform3x3<T>::operator[](int i) const
+{
+    return this->m_array[i];
+}
+
+template <class T>
+class Vector3
+{
+public:
+	Vector3(T a = 0, T b = 0, T c = 0);
+	Vector3<T> Normalize() const;                         // normalization
+	Transform3x3<T> operator*(const Vector3<T> &v) const;   // outer product
+	T dot(const Vector3 &v) const;                // dot product
+	T& operator[](int i);                          // element access
+	const T& operator[](int i) const;              // element access
+	Vector3<T> cross(const Vector3<T> &v) const;            // cross product
+	Vector3<T> operator+(const Vector3<T> &v) const;
+	Vector3<T> operator-(const Vector3<T> &v) const;
+	Vector3<T> operator*(T scalar) const;
+	Vector3<T> operator/(T scalar) const;
+	T Length() const;
+	void Dump() const;
+	void DumpSci() const;
+	void Write(ofstream &outStream) const;
+	void Read(ifstream &inStream);
+
+private:
+	T m_array[3];
+};
+
+template <class T>
+inline T& Vector3<T>::operator[](int i)
+{
+    return this->m_array[i];
+}
+
+template <class T>
+inline const T& Vector3<T>::operator[](int i) const
+{
+    return this->m_array[i];
+}
+
+typedef Vector3<double> CVector3;
+typedef Transform3x3<double> CTransform3x3;
+
+#include "Transform-3x3.inl"
+
+#endif
+
+
