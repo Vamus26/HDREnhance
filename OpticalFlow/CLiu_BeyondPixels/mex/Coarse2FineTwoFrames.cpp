@@ -46,7 +46,7 @@ using namespace std;
 // 	mexErrMsgTxt("Unknown type of the image!");
 // }
 
-void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+void mexFunction(mwSize nlhs, mxArray *plhs[], mwSize nrhs, const mxArray *prhs[])
 {
 	// check for proper number of input and output arguments
 	if(nrhs<2 || nrhs>3)
@@ -66,16 +66,16 @@ void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	// get the parameters
 	double alpha= 1;
 	double ratio=0.5;
-	int minWidth= 40;
-	int nOuterFPIterations = 3;
-	int nInnerFPIterations = 1;
-	int nSORIterations= 20;
+	mwSize minWidth= 40;
+	mwSize nOuterFPIterations = 3;
+	mwSize nInnerFPIterations = 1;
+	mwSize nSORIterations= 20;
 	if(nrhs>2)
 	{
-		int nDims=mxGetNumberOfDimensions(prhs[2]);
-		const int *dims=mxGetDimensions(prhs[2]);
+		mwSize nDims=mxGetNumberOfDimensions(prhs[2]);
+		const mwSize *dims=mxGetDimensions(prhs[2]);
 		double* para=(double *)mxGetData(prhs[2]);
-		int npara=dims[0]*dims[1];
+		mwSize npara=dims[0]*dims[1];
 		if(npara>0)
 			alpha=para[0];
 		if(npara>1)

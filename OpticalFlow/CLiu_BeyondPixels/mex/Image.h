@@ -2701,8 +2701,8 @@ template <class T>
 template <class T1>
 void Image<T>::LoadMatlabImageCore(const mxArray *image,bool IsImageScaleCovnersion)
 {
-	int nDim = mxGetNumberOfDimensions(image);
-	const int* imDim = mxGetDimensions(image);
+	mwSize nDim = mxGetNumberOfDimensions(image);
+	const mwSize* imDim = mxGetDimensions(image);
 	if(nDim==2)
 		allocate(imDim[1],imDim[0]);
 	else if(nDim==3)
@@ -2811,11 +2811,11 @@ void Image<T>::ConvertToMatlab(T1 *pMatlabPlane) const
 template <class T>
 void Image<T>::OutputToMatlab(mxArray *&matrix) const
 {
-	int dims[3];
+	mwSize dims[3];
 	dims[0]=imHeight;
 	dims[1]=imWidth;
 	dims[2]=nChannels;
-	int nDims;
+	mwSize nDims;
 	nDims = (nChannels ==1)? 2:3;
 	if(typeid(T) == typeid(unsigned char))
 		matrix=mxCreateNumericArray(nDims, dims,mxUINT8_CLASS, mxREAL);
