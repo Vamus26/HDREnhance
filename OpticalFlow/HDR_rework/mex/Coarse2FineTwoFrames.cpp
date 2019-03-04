@@ -48,10 +48,11 @@ using namespace std;
 
 void mexFunction(mwSize nlhs, mxArray *plhs[], mwSize nrhs, const mxArray *prhs[])
 {
-	DImage Im1,Im2, Im3;
+	DImage Im1,Im2, Im3, Im4;
     Im1.LoadMatlabImage(prhs[0]);
     Im2.LoadMatlabImage(prhs[1]);
 	Im3.LoadMatlabImage(prhs[2]);
+	Im4.LoadMatlabImage(prhs[3]);
 
 	if(Im1.matchDimension(Im2)==false)
 		mexErrMsgTxt("The two images don't match!");
@@ -65,9 +66,9 @@ void mexFunction(mwSize nlhs, mxArray *plhs[], mwSize nrhs, const mxArray *prhs[
 	mwSize nSORIterations= 20;
 	if(nrhs>2)
 	{
-		mwSize nDims=mxGetNumberOfDimensions(prhs[3]);
-		const mwSize *dims=mxGetDimensions(prhs[3]);
-		double* para=(double *)mxGetData(prhs[3]);
+		mwSize nDims=mxGetNumberOfDimensions(prhs[4]);
+		const mwSize *dims=mxGetDimensions(prhs[4]);
+		double* para=(double *)mxGetData(prhs[4]);
 		mwSize npara=dims[0]*dims[1];
 		if(npara>0)
 			alpha=para[0];
@@ -84,7 +85,7 @@ void mexFunction(mwSize nlhs, mxArray *plhs[], mwSize nrhs, const mxArray *prhs[
 	}
 
 	DImage vx,vy,warpI2,warpI3;
-	OpticalFlow::Coarse2FineFlow(vx,vy,warpI2,Im1,Im2,alpha,ratio,minWidth,nOuterFPIterations,nInnerFPIterations,nSORIterations,warpI3, Im3);
+	OpticalFlow::Coarse2FineFlow(vx,vy,warpI2,Im1,Im2,alpha,ratio,minWidth,nOuterFPIterations,nInnerFPIterations,nSORIterations,warpI3, Im3, Im4);
 
 	// output the parameters
 	vx.OutputToMatlab(plhs[0]);

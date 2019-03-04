@@ -44,7 +44,7 @@ public:
 
 	// function of coarse to fine optical flow
 	static void Coarse2FineFlow(DImage& vx,DImage& vy,DImage &warpI2,const DImage& Im1,const DImage& Im2,double alpha,double ratio,int minWidth,
-															int nOuterFPIterations,int nInnerFPIterations,int nCGIterations,DImage &warpI3, const DImage& Im3);
+															int nOuterFPIterations,int nInnerFPIterations,int nCGIterations,DImage &warpI3, const DImage& Im3, const DImage& Im4);
 
 	static void Coarse2FineFlowLevel(DImage& vx,DImage& vy,DImage &warpI2,const DImage& Im1,const DImage& Im2,double alpha,double ratio, mwSize nLevels,
 															mwSize nOuterFPIterations, mwSize nInnerFPIterations, mwSize nCGIterations);

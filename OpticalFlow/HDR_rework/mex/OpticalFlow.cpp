@@ -1210,22 +1210,24 @@ void OpticalFlow::testLaplacian(int dim)
 // function to perfomr coarse to fine optical flow estimation
 //--------------------------------------------------------------------------------------
 void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const DImage &Im1, const DImage &Im2, double alpha, double ratio, int minWidth, 
-																	 int nOuterFPIterations, int nInnerFPIterations, int nCGIterations, DImage &warpI3, const DImage& Im3)
+																	 int nOuterFPIterations, int nInnerFPIterations, int nCGIterations, DImage &warpI3, const DImage& Im3, const DImage& Im4)
 {
 	// first build the pyramid of the two images
 	GaussianPyramid GPyramid1;
 	GaussianPyramid GPyramid2;
 	GaussianPyramid GPyramid3;
+	GaussianPyramid GPyramid4;
 	if(IsDisplay)
 		cout<<"Constructing pyramid...";
 	GPyramid1.ConstructPyramid(Im1,ratio,minWidth);
 	GPyramid2.ConstructPyramid(Im2,ratio,minWidth);
 	GPyramid3.ConstructPyramid(Im3, ratio, minWidth);
+	GPyramid4.ConstructPyramid(Im4, ratio, minWidth);
 	if(IsDisplay)
 		cout<<"done!"<<endl;
 	
 	// now iterate from the top level to the bottom
-	DImage Image1,Image2,WarpImage2, WarpImage3, Image3;
+	DImage Image1,Image2,WarpImage2, WarpImage3, Image3, Image4;
 
 	// initialize noise
 	switch(noiseModel){
@@ -1248,6 +1250,7 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 		im2feature(Image1,GPyramid1.Image(k));
 		im2feature(Image2,GPyramid2.Image(k));
 		im2feature(Image3, GPyramid3.Image(k));
+		im2feature(Image4, GPyramid4.Image(k));
 
 		if(k==GPyramid1.nlevels()-1) // if at the top level
 		{
@@ -1265,7 +1268,7 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 			vy.Multiplywith(1/ratio);
 			if (interpolation == Bilinear) {
 				warpFL(WarpImage2, Image1, Image2, vx, vy);
-				warpFL(WarpImage3, Image1, Image3, vx, vy);
+				warpFL(WarpImage3, Image3, Image4, vx, vy);
 			}
 
 			else {
@@ -1274,14 +1277,14 @@ void OpticalFlow::Coarse2FineFlow(DImage &vx, DImage &vy, DImage &warpI2,const D
 			}
 		}
 
+		SmoothFlowSOR(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations+k,nInnerFPIterations,nCGIterations+k*3);
 		//SmoothFlowSOR(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations+k,nInnerFPIterations,nCGIterations+k*3);
-		//SmoothFlowSOR(Image1,Image2,WarpImage2,vx,vy,alpha,nOuterFPIterations+k,nInnerFPIterations,nCGIterations+k*3);
-		SmoothFlowSORPlusThird(Image1, Image2, WarpImage3, vx, vy, alpha, nOuterFPIterations + k, nInnerFPIterations, nCGIterations + k * 3, Image3, WarpImage3);
+		//SmoothFlowSORPlusThird(Image1, Image2, WarpImage3, vx, vy, alpha, nOuterFPIterations + k, nInnerFPIterations, nCGIterations + k * 3, Image3, WarpImage3);
 		if(IsDisplay)
 			cout<<endl;
 	}
 	Im2.warpImageBicubicRef(Im1,warpI2,vx,vy);
-	Im3.warpImageBicubicRef(Im1, warpI3, vx, vy);
+	Im4.warpImageBicubicRef(Im3, warpI3, vx, vy);
 	warpI2.threshold();
 	warpI3.threshold();
 }
