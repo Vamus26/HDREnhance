@@ -38,7 +38,9 @@ figure;imshow(warpI2);
 figure;imshow(warpI3);
 K = imabsdiff(warpI2,warpI3);
 figure;imshow(K,[]);
-
+imwrite(warpI2,fullfile('output',[example '_LDR_warped.tif']));
+imwrite(warpI3,fullfile('output',[example '_HDR_warped.tif']));
+imwrite(K,fullfile('output',[example '_differences.tif']));
 
 % output gif
 clear volume;
