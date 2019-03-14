@@ -1,2 +1,5 @@
 http://grail.cs.washington.edu/projects/enhancing-spacetime/
 http://grail.cs.washington.edu/projects/videoenhancement/
+
+https://github.com/roflmaostc/Fast-Approximate-Energy-Minimization-via-Graph-Cuts
+http://www.cs.cornell.edu/rdz/Papers/BVZ-iccv99.pdf

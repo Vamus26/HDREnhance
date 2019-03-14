@@ -1,3 +1,4 @@
 http://www.morethantechnical.com/2010/05/05/bust-out-your-own-graphcut-based-image-segmentation-with-opencv-w-code/
 
 Matlab Wrapper for Graph Cuts: http://www.wisdom.weizmann.ac.il/~bagon/matlab.html
+https://github.com/shaibagon/GCMex

@@ -9,11 +9,11 @@ close all
 
 % read an image
 %im = im2double(imread('outdoor_small.jpg'));
-im = im2double(imread('-02690.tif'));
+im = im2double(imread('BWD_LDR094093_HDR093103_CALC.tif'));
 sz = size(im);
 
 % try to segment the image into k different regions
-k = 4;
+k = 8;
 
 % color space distance
 distance = 'sqEuclidean';

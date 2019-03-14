@@ -1,20 +1,20 @@
 addpath('mex');
 
 % we provide two sequences "car" and "table"
-example = 'TEST93_119table';
+example = 'BWD_LDR099093_HDR093099';
 %example = 'car';
 
 % load the two frames
 %im1 = im2double(imread([example '2.jpg']));
 %im2 = im2double(imread([example '1.jpg']));
 %im3 = im2double(imread([example '1.jpg']));
-im1 = im2double(imread('l093.jpg'));
-im2 = im2double(imread('l095.jpg'));
+im1 = im2double(imread('l099.jpg'));
+im2 = im2double(imread('l093.jpg'));
 %im1 = im2double(imread('hdr-00093.tif'));
 %im2 = im2double(imread('hdr-00095.tif'));
 %im3 = im2double(imread('l097.jpg'));
 im3 = im2double(imread('hdr-00093.tif'));
-im4 = im2double(imread('hdr-00119.tif'));
+im4 = im2double(imread('hdr-00099.tif'));
 % im1 = imresize(im1,0.5,'bicubic');
 % im2 = imresize(im2,0.5,'bicubic');
 
@@ -40,10 +40,10 @@ figure;imshow(warpI3);
 K = imabsdiff(warpI2,warpI3);
 figure;imshow(K,[]);
 imwrite(warpI2,fullfile('output',[example '_LDR_warped.tif']));
-imwrite(warpI3,fullfile('output',[example '_HDR_warped.tif']));
+imwrite(warpI3,fullfile('output',[example '_CALC.tif']));
 imwrite(warpI3,fullfile('output',[example '_HDR_warped.jpg']));
-imwrite(K,fullfile('output',[example '_differences.tif']));
-imwrite(K,fullfile('output',[example '_differences.jpg']));
+%imwrite(K,fullfile('output',[example '_differences.tif']));
+%imwrite(K,fullfile('output',[example '_differences.jpg']));
 % output gif
 clear volume;
 volume(:,:,:,1) = im1;
