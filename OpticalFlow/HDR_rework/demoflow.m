@@ -1,15 +1,15 @@
 addpath('mex');
 
 % we provide two sequences "car" and "table"
-example = 'BWD_LDR099093_HDR093099';
+example = 'BWD_LDR093099_HDR093099_ohnedouble';
 %example = 'car';
 
 % load the two frames
 %im1 = im2double(imread([example '2.jpg']));
 %im2 = im2double(imread([example '1.jpg']));
 %im3 = im2double(imread([example '1.jpg']));
-im1 = im2double(imread('l099.jpg'));
-im2 = im2double(imread('l093.jpg'));
+im1 = im2double(imread('l093.jpg'));
+im2 = im2double(imread('l099.jpg'));
 %im1 = im2double(imread('hdr-00093.tif'));
 %im2 = im2double(imread('hdr-00095.tif'));
 %im3 = im2double(imread('l097.jpg'));
