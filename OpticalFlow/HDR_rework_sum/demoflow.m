@@ -1,20 +1,20 @@
 addpath('mex');
 
 % we provide two sequences "car" and "table"
-example = 'BWD_LDR093_099_HDR093_099_SUMMED_BACK';
+example = 'BWD_LDR093_099_HDR093_099_SUMMED_FORWARD';
 %example = 'car';
 
 % load the two frames
 %im1 = im2double(imread([example '2.jpg']));
 %im2 = im2double(imread([example '1.jpg']));
 %im3 = im2double(imread([example '1.jpg']));
-im1 = im2double(imread('l099.jpg'));
-im2 = im2double(imread('l097.jpg'));
+im1 = im2double(imread('l093.jpg'));
+im2 = im2double(imread('l095.jpg'));
 %im1 = im2double(imread('hdr-00093.tif'));
 %im2 = im2double(imread('hdr-00095.tif'));
 %im3 = im2double(imread('l097.jpg'));
-im3 = im2double(imread('hdr-00099.tif'));
-im4 = im2double(imread('hdr-00093.tif'));
+im3 = im2double(imread('hdr-00093.tif'));
+im4 = im2double(imread('hdr-00099.tif'));
 % im1 = imresize(im1,0.5,'bicubic');
 % im2 = imresize(im2,0.5,'bicubic');
 
@@ -49,8 +49,8 @@ max(max(vy))
 clear vx;
 clear vy;
 
-im1 = im2double(imread('l097.jpg'));
-im2 = im2double(imread('l095.jpg'));
+im1 = im2double(imread('l095.jpg'));
+im2 = im2double(imread('l097.jpg'));
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
 
 max(max(vx))
@@ -62,8 +62,8 @@ max(max(vy_2))
 clear vx;
 clear vy;
 
-im1 = im2double(imread('l095.jpg'));
-im2 = im2double(imread('l093.jpg'));
+im1 = im2double(imread('l097.jpg'));
+im2 = im2double(imread('l099.jpg'));
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
 max(max(vx))
 max(max(vy))
@@ -90,13 +90,14 @@ imwrite(warpI2,fullfile('output',[example '_ext_warped.tif']));
 %imwrite(K,fullfile('output',[example '_differences.jpg']));
 % output gif
 clear volume;
-volume(:,:,:,1) = im1;
-volume(:,:,:,2) = im2;
+volume(:,:,:,1) = im2;
+volume(:,:,:,2) = im1;
 if exist('output','dir')~=7
     mkdir('output');
 end
 frame2gif(volume,fullfile('output',[example '_input.gif']));
 volume(:,:,:,2) = warpI2;
+volume(:,:,:,3) = im1;
 frame2gif(volume,fullfile('output',[example '_warp.gif']));
 
 

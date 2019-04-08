@@ -1,0 +1,29 @@
+#include "SS_Setup.h"
+
+SS_Setup::SS_SetupParams SS_Setup::SS_SetupParams::Default()
+{
+	SS_SetupParams params;
+	params.targetDir = "." + OS_PATH_DELIMIT_STR;
+	params.optFN = "opt.txt";
+	params.listFN = "list.txt";
+	//bug
+	params.noahBundleFN = "bundle.out";
+	params.neighSpacing = 2;
+	params.minViewsForScenePoint = 3;
+	params.invertHandedness = false;
+	return params;
+}
+
+void SS_Setup::SS_SetupParams::Dump(string prefix)
+{
+	const char* prefixPtr = prefix.c_str();
+
+	printf("\n");
+	printf("%sStatic Scene Setup params:\n", prefixPtr);
+	printf("%s  targetDir: %s\n", prefixPtr, this->targetDir.c_str());
+	printf("%s  optFN:     %s\n", prefixPtr, this->optFN.c_str());
+	printf("%s  listFN:    %s\n", prefixPtr, this->listFN.c_str());
+	printf("%s  neighSpacing:          %i\n", prefixPtr, this->neighSpacing);
+	printf("%s  minViewsForScenePoint: %i\n", prefixPtr, this->minViewsForScenePoint);
+	printf("%s  invertHandedness:      %i\n", prefixPtr, (int) this->invertHandedness);
+}

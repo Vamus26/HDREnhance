@@ -1,0 +1,984 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source Files\General">
+      <UniqueIdentifier>{80ea02fb-5137-42a9-9642-77a8ed14fa30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\General\ImageLib">
+      <UniqueIdentifier>{088cebc1-f63d-4e0c-83be-64dc66c35caf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\General\Disk">
+      <UniqueIdentifier>{458f7069-94c6-42d4-b3dc-4db6ae2fd55f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\General\Transform">
+      <UniqueIdentifier>{88ccd981-ea67-4d2d-a473-517583dca0d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\General\maxflow">
+      <UniqueIdentifier>{025a037f-bca1-4a3b-bbd0-f8819c711b7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig">
+      <UniqueIdentifier>{fa804398-0bda-407e-abea-6ac8728e293e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig\Calibation">
+      <UniqueIdentifier>{b16e5260-ffea-45f4-9c93-235891177b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig\Camera">
+      <UniqueIdentifier>{0ce289f9-0031-46b1-a171-11a8bc213c34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig\Camera\CameraMats">
+      <UniqueIdentifier>{4304e334-9f9e-42c3-9055-79d15a236581}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig\StreamPixIO">
+      <UniqueIdentifier>{34806a88-4ecf-4fe3-98d7-d5cfea1590f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Rig\SS_Setup">
+      <UniqueIdentifier>{67889300-4be1-4c5f-b5db-2de41cebfe59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo">
+      <UniqueIdentifier>{35cc1842-4edf-42b9-b43a-ce1f018516f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation">
+      <UniqueIdentifier>{948c07fc-9384-44d3-b6e9-02972b210096}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation\MS_Seg">
+      <UniqueIdentifier>{6a7bb02f-4e94-4c57-bea9-c6ac2d23c518}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation\MS_Seg\segm">
+      <UniqueIdentifier>{aa321dd1-ce57-4636-8826-0c24abbd83c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation\MS_Seg\edge">
+      <UniqueIdentifier>{b1954aa7-96ec-4f34-b739-109193539196}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation\MS_Seg\prompt">
+      <UniqueIdentifier>{aeb8c614-869a-4430-8050-3887199f133b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Segmentation\Segmenter">
+      <UniqueIdentifier>{b3f7f530-9484-49e7-802b-44cafbb68c4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\ScenePlanes">
+      <UniqueIdentifier>{88c8c1a2-ebec-4e3e-868a-9e478baaf0a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Renderer">
+      <UniqueIdentifier>{4e50a296-6274-4e81-a3c7-f989319356bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Renderer\GC_Stitch">
+      <UniqueIdentifier>{d270cff1-6af1-4178-85cd-7dd97b379c69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Renderer\PoisonBlending">
+      <UniqueIdentifier>{41ff38b2-f606-4e5c-94d9-481272c01902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Stereo\Renderer\matting">
+      <UniqueIdentifier>{110427ec-3224-4db8-a8c9-79ab6a5fe37b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Draw">
+      <UniqueIdentifier>{d4563230-47d5-43d6-a40a-3c26876cac42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FeatureLib">
+      <UniqueIdentifier>{53bbac33-d37c-4a29-834a-bf97fcecc230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FeatureLib\MotionModel">
+      <UniqueIdentifier>{264818c1-bde3-407b-bde5-cd88f136ddd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\FeatureLib\MotionModel\fmatrix">
+      <UniqueIdentifier>{61db1fe9-58da-4e15-9b38-ae5a0137ebce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Driver">
+      <UniqueIdentifier>{68dc1ea2-b839-4c51-b3d6-efcfed9a525e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Driver\OptParser">
+      <UniqueIdentifier>{0e2f106a-b787-4a82-af1c-dfa52baadaff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused">
+      <UniqueIdentifier>{d4a298bb-2422-4c8e-a7b4-d4a1e87f4105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\MSR_Flow">
+      <UniqueIdentifier>{bab1cc02-0fc1-4b9f-8769-b7dd07654a45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\GCFlow">
+      <UniqueIdentifier>{9d592d4c-b7a6-4ecd-827f-d3ebb12beab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\Flow">
+      <UniqueIdentifier>{9727020f-e182-4284-bc0f-4c7c3058a936}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\SampleTest">
+      <UniqueIdentifier>{ca598ac2-33a0-4d75-8faa-a28f0fffeb4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\SampleTest\MVFlow">
+      <UniqueIdentifier>{aa2a5c71-44dc-484e-8d4e-db182abe9aef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\SuperRes">
+      <UniqueIdentifier>{8069f54a-7a6a-49f3-b6ff-f6274aee0ecd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\UI">
+      <UniqueIdentifier>{0c9ad07f-f6db-49ef-8329-9b17b231350f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\VideoEnhancer">
+      <UniqueIdentifier>{a35efb92-0f47-4a6a-bc1d-5f6ce79b1752}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\BlackFlow">
+      <UniqueIdentifier>{d6435cf4-0403-456f-b5cf-5a943679b8c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Unused\BlackFlow\lib">
+      <UniqueIdentifier>{27da04c3-b3ec-4aef-b2a3-ae01828062e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\General\ColorHelper.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\Debug.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\Definitions.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\MathHelper.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\Timer.cpp">
+      <Filter>Source Files\General</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\Image.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageIO-Tiff.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageIO.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-Demosiac.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-DHW.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-DirSmooth.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\ImageProcessing.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ImageLib\RefCntMem.cpp">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Disk\Disk.cpp">
+      <Filter>Source Files\General\Disk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\Transform-2x2.cpp">
+      <Filter>Source Files\General\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\General\Transform-4x4.cpp">
+      <Filter>Source Files\General\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\maxflow\adjacency_list\graph.cpp">
+      <Filter>Source Files\General\maxflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\maxflow\adjacency_list\maxflow.cpp">
+      <Filter>Source Files\General\maxflow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-CameraPath.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-Checks.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-Debug.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-FileNames.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-Params.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig-Planes.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\Rig.cpp">
+      <Filter>Source Files\Rig</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator-CamMatrices.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator-FileNames.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator-NoahLarry.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator-Params.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator-PointExtraction.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Calibration\RigCalibrator.cpp">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\Camera-Accessors.cpp">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\Camera-Checks.cpp">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\Camera-FileNames.cpp">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\Camera-Planes.cpp">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\Camera.cpp">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\CameraMats-Checks.cpp">
+      <Filter>Source Files\Rig\Camera\CameraMats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\CameraMats-IO.cpp">
+      <Filter>Source Files\Rig\Camera\CameraMats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\CameraMats-Proj.cpp">
+      <Filter>Source Files\Rig\Camera\CameraMats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Camera\CameraMats.cpp">
+      <Filter>Source Files\Rig\Camera\CameraMats</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\StreamPixIO\StreamPixIO.cpp">
+      <Filter>Source Files\Rig\StreamPixIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\SS_Setup-Params.cpp">
+      <Filter>Source Files\Rig\SS_Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Rig\SS_Setup.cpp">
+      <Filter>Source Files\Rig\SS_Setup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\CamFrameContext.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-BP-Init.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-BP.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-Debug.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-FileNames.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-Init.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-Load.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-Params.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo-StaticData.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\Stereo.cpp">
+      <Filter>Source Files\Stereo</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment-Debug.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment-IO.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment-SegData.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment-SpatialNeighs.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment-ViewNeighs.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segment.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segmentation-Debug.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segmentation-IO.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segmentation.cpp">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\segm\ms.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\segm\msImageProcessor.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\segm\msSysPrompt.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\segm\RAList.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\segm\rlist.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdge.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdgeDetect.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdgeList.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgGlobalFc.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgImage.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\edison.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\globalFnc.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\libppm.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\parser.cpp">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\SegmentBreaker-Params.cpp">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\SegmentBreaker.cpp">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segmenter-Params.cpp">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Segmentation\Segmenter.cpp">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\ScenePoints\PCloudSegmenter.cpp">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\ScenePoints\Plane.cpp">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\ScenePoints\PlaneFromPoints.cpp">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\ScenePoints\PointCloud.cpp">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\ScenePoints\ScenePoints.cpp">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-FileNames.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Flow.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-IO.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Matte.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-NVI.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Params.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\StereoReconstruction.cpp">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\GC_Stitch\CCLabeler.cpp">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\GC_Stitch\PiecesBlender.cpp">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\GC_Stitch\RegistrationDefs.cpp">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\PoisonBlending\BlendSolver.cpp">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\PoisonBlending\SparseSolver.cpp">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver-Color.cpp">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver-FileNames.cpp">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver.cpp">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Matting\matting.cpp">
+      <Filter>Source Files\Stereo\Renderer\matting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Renderer\Draw.cpp">
+      <Filter>Source Files\Draw</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FeatureLib\FeatureMatcher.cpp">
+      <Filter>Source Files\FeatureLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FeatureLib\FeatureRenderer.cpp">
+      <Filter>Source Files\FeatureLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\FeatureLib\Features.cpp">
+      <Filter>Source Files\FeatureLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\horn.cpp">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\Motion.cpp">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\MotionFromMatches.cpp">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\PiecewiseMotion.cpp">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\fmatrix\fmatrix.c">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\fmatrix\matrix.c">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\fmatrix\triangulate.c">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MotionModel\fmatrix\vector.c">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Features-Debug.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Features.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Flow.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Generic.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Preprocess.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-Stereo.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver-temp.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Driver\Driver.cpp">
+      <Filter>Source Files\Driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OptParser\OptFileParser-Params.cpp">
+      <Filter>Source Files\Driver\OptParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\OptParser\OptFileParser.cpp">
+      <Filter>Source Files\Driver\OptParser</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MSR_Flow\FloatImagePyramid.cpp">
+      <Filter>Source Files\Unused\MSR_Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\GCFlow-params.cpp">
+      <Filter>Source Files\Unused\GCFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\GCFlow.cpp">
+      <Filter>Source Files\Unused\GCFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-DataCost.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Debug.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-GraphCut.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Load.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Params.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Process.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow.cpp">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\test\SampleTest.cpp">
+      <Filter>Source Files\Unused\SampleTest</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-DataCalc.cpp">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-Debug.cpp">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-params.cpp">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-solver.cpp">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow.cpp">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes-BP.cpp">
+      <Filter>Source Files\Unused\SuperRes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes-Params.cpp">
+      <Filter>Source Files\Unused\SuperRes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes-Training.cpp">
+      <Filter>Source Files\Unused\SuperRes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes.cpp">
+      <Filter>Source Files\Unused\SuperRes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\SegVisWin.cpp">
+      <Filter>Source Files\Unused\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\SuperResWin.cpp">
+      <Filter>Source Files\Unused\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\UI_Defs.cpp">
+      <Filter>Source Files\Unused\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\VStudioWin.cpp">
+      <Filter>Source Files\Unused\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Data.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Matching.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Params.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Render.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-SuperRes.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Training.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer.cpp">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\FlowHelper.cpp">
+      <Filter>Source Files\Unused\BlackFlow</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\derivatives.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\disconts.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\filter.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\gnc.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\image-io.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\image_stats.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\pyramid-sor.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\pyramid.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\sor.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\utils.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\warp-back.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\BlackFlow\warp.c">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\General\ColorHelper.h">
+      <Filter>Source Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Debug.h">
+      <Filter>Source Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Definitions.h">
+      <Filter>Source Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\MathHelper.h">
+      <Filter>Source Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Timer.h">
+      <Filter>Source Files\General</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImageLib\Image.h">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImageLib\ImageIO.h">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImageLib\ImageProcessing.h">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ImageLib\RefCntMem.h">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Disk\Disk.h">
+      <Filter>Source Files\General\Disk</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Transform-2x2.h">
+      <Filter>Source Files\General\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Transform-3x3.h">
+      <Filter>Source Files\General\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\General\Transform-4x4.h">
+      <Filter>Source Files\General\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GCFlow\maxflow\adjacency_list\block.h">
+      <Filter>Source Files\General\maxflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GCFlow\maxflow\energy.h">
+      <Filter>Source Files\General\maxflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GCFlow\maxflow\adjacency_list\graph.h">
+      <Filter>Source Files\General\maxflow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Rig\Rig.h">
+      <Filter>Source Files\Rig</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Calibration\RigCalibrator.h">
+      <Filter>Source Files\Rig\Calibation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Camera\Camera.h">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Camera\CameraDefs.h">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Camera\CameraNeigh.h">
+      <Filter>Source Files\Rig\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Camera\CameraMats.h">
+      <Filter>Source Files\Rig\Camera\CameraMats</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StreamPixIO\StreamPixDefs.h">
+      <Filter>Source Files\Rig\StreamPixIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\StreamPixIO\StreamPixIO.h">
+      <Filter>Source Files\Rig\StreamPixIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Rig\SS_Setup.h">
+      <Filter>Source Files\Rig\SS_Setup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\CamFrameContext.h">
+      <Filter>Source Files\Stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\Stereo.h">
+      <Filter>Source Files\Stereo</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment-Bounds.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment-mem.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment-SegData.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment-SpatialNeighs.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment-ViewNeighs.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segment.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segmentation.h">
+      <Filter>Source Files\Stereo\Segmentation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\ms.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\msImageProcessor.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\msSys.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\RAList.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\rlist.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\segm\tdef.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\segm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgDefaults.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdge.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdgeDetect.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdgeList.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgImage.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\edge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\defs.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\edison.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\error.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\flags.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\imfilt.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\libppm.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\parser.h">
+      <Filter>Source Files\Stereo\Segmentation\MS_Seg\prompt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\SegmentBreaker.h">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Segmentation\Segmenter.h">
+      <Filter>Source Files\Stereo\Segmentation\Segmenter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\ScenePoints\PCloudSegmenter.h">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\ScenePoints\Plane.h">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\ScenePoints\PlaneFromPoints.h">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\ScenePoints\PointCloud.h">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\ScenePoints\ScenePoints.h">
+      <Filter>Source Files\Stereo\ScenePlanes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\StereoReconstruction.h">
+      <Filter>Source Files\Stereo\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\GC_Stitch\CCLabeler.h">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\GC_Stitch\GC_Stitch_Defs.h">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\GC_Stitch\PiecesBlender.h">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Stereo\GC_Stitch\RegistrationDefs.h">
+      <Filter>Source Files\Stereo\Renderer\GC_Stitch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Renderer\Draw.h">
+      <Filter>Source Files\Draw</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MotionModel\fmatrix\defines.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MotionModel\fmatrix\triangulate.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Driver\Driver.h">
+      <Filter>Source Files\Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\Driver\GenericOpts.h">
+      <Filter>Source Files\Driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\OptParser\OptFileParser.h">
+      <Filter>Source Files\Driver\OptParser</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\MVFlow\MVFlow.h">
+      <Filter>Source Files\Unused\SampleTest\MVFlow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BlackFlow\FlowHelper.h">
+      <Filter>Source Files\Unused\BlackFlow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BlackFlow\incremental.h">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BlackFlow\planar.h">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\BlackFlow\robust.h">
+      <Filter>Source Files\Unused\BlackFlow\lib</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\ImageLib\Image.inl">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </None>
+    <None Include="..\src\ImageLib\ImageIO-TGA.inl">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </None>
+    <None Include="..\src\ImageLib\ImageIO.inl">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </None>
+    <None Include="..\src\ImageLib\ImageProcessing.inl">
+      <Filter>Source Files\General\ImageLib</Filter>
+    </None>
+    <None Include="..\src\General\Transform-2x2.inl">
+      <Filter>Source Files\General\Transform</Filter>
+    </None>
+    <None Include="..\src\General\Transform-3x3.inl">
+      <Filter>Source Files\General\Transform</Filter>
+    </None>
+    <None Include="..\src\BlackFlow\FlowHelper.inl">
+      <Filter>Source Files\Unused\BlackFlow</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\todo.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\BlendSolver.h">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\SparseSolver.h">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\VideoSolver.h">
+      <Filter>Source Files\Stereo\Renderer\PoisonBlending</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\FeatureLib\FeatureDefs.h">
+      <Filter>Source Files\FeatureLib</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\FeatureLib\FeatureMatcher.h">
+      <Filter>Source Files\FeatureLib</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\FeatureLib\FeatureRenderer.h">
+      <Filter>Source Files\FeatureLib</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\FeatureLib\Features.h">
+      <Filter>Source Files\FeatureLib</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\horn.h">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\Motion.h">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\MotionFromMatches.h">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\PiecewiseMotion.h">
+      <Filter>Source Files\FeatureLib\MotionModel</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\colin_defines.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\fmatrix.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\lapack.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\matrix.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\minpack.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\my_types.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MotionModel\fmatrix\vector.h">
+      <Filter>Source Files\FeatureLib\MotionModel\fmatrix</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\MSR_Flow\FloatImagePyramid.h">
+      <Filter>Source Files\Unused\MSR_Flow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\GCFlow\GCFlow.h">
+      <Filter>Source Files\Unused\GCFlow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\Flow\Flow.h">
+      <Filter>Source Files\Unused\Flow</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\test\SampleTest.h">
+      <Filter>Source Files\Unused\SampleTest</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\SuperRes\SuperRes.h">
+      <Filter>Source Files\Unused\SuperRes</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\SegVisWin.h">
+      <Filter>Source Files\Unused\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\SuperResWin.h">
+      <Filter>Source Files\Unused\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\UI_Defs.h">
+      <Filter>Source Files\Unused\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\VStudioWin.h">
+      <Filter>Source Files\Unused\UI</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\src\VideoEnhancer\VideoEnhancer.h">
+      <Filter>Source Files\Unused\VideoEnhancer</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>

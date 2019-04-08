@@ -1,0 +1,151 @@
+!*******************************************************************************
+!                             INTEL CONFIDENTIAL
+!   Copyright(C) 2005-2006 Intel Corporation. All Rights Reserved.
+!   The source code contained  or  described herein and all documents related to
+!   the source code ("Material") are owned by Intel Corporation or its suppliers
+!   or licensors.  Title to the  Material remains with  Intel Corporation or its
+!   suppliers and licensors. The Material contains trade secrets and proprietary
+!   and  confidential  information of  Intel or its suppliers and licensors. The
+!   Material  is  protected  by  worldwide  copyright  and trade secret laws and
+!   treaty  provisions. No part of the Material may be used, copied, reproduced,
+!   modified, published, uploaded, posted, transmitted, distributed or disclosed
+!   in any way without Intel's prior express written permission.
+!   No license  under any  patent, copyright, trade secret or other intellectual
+!   property right is granted to or conferred upon you by disclosure or delivery
+!   of the Materials,  either expressly, by implication, inducement, estoppel or
+!   otherwise.  Any  license  under  such  intellectual property  rights must be
+!   express and approved by Intel in writing.
+!
+!*******************************************************************************
+!  Content:
+!    Intel(R) Math Kernel Library (MKL) interface for RCI CG solver
+!******************************************************************************
+!
+!   Interfaces for the RCI CG solver routines
+!
+       interface 
+        subroutine  dcg(n, x, b, rci, ipar, dpar, tmp)
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DCG' :: DCG
+             integer            n, rci
+             integer            ipar(*)
+             double precision   x(*), b(*)
+             double precision   dpar(*), tmp(*)
+        end subroutine dcg
+      end interface
+
+      interface 
+        subroutine  dcg_init(n, x, b, rci_request,ipar, dpar, tmp)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:'_DCG_INIT' :: DCG_INIT
+        integer            n, rci_request
+        integer            ipar(*)
+        double precision   x(*), b(*)
+        double precision   dpar(*), tmp(*)
+        end subroutine dcg_init
+      end interface
+
+      interface 
+        subroutine  dcg_check(n, x, b, rci_request,ipar, dpar, tmp)
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DCG_CHECK' :: DCG_CHECK
+        integer            n, rci_request
+        integer            ipar(*)
+        double precision   x(*), b(*)
+        double precision   dpar(*), tmp(*)
+        end subroutine dcg_check
+      end interface
+
+
+      interface 
+        subroutine  dcg_get(n, x, b, rci_request,ipar, dpar, tmp,
+     $                     itercount)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:'_DCG_GET' :: DCG_GET
+        integer            n, rci_request, itercount
+        integer            ipar(*)
+        double precision   x(*), b(*)
+        double precision   dpar(*), tmp(*)
+        end subroutine dcg_get
+      end interface
+
+!
+! Interfaces for the additional dense and sparse BLAS routines
+! and functions needed for cg  examples
+! 
+      interface 
+        subroutine  mkl_dcsrsymv(uplo, m, 
+     $            val, ia, ja,  x, y)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:
+!DEC$& '_MKL_DCSRSYMV' :: MKL_DCSRSYMV
+!DEC$ ATTRIBUTES NOMIXED_STR_LEN_ARG :: MKL_DCSRSYMV
+         character          uplo
+         integer            m
+         integer            ia(*), ja(*)
+         double precision   val(*)
+         double precision   y(*), x(*)
+        end subroutine  mkl_dcsrsymv
+      end interface
+
+      interface 
+         subroutine mkl_dcsrsv( transa, m, alpha, matdescra,
+     $           val, indx, pntrb, pntre,  x, y)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:
+!DEC$& '_MKL_DCSRSV' :: MKL_DCSRSV
+!DEC$ ATTRIBUTES NOMIXED_STR_LEN_ARG :: MKL_DCSRSV
+         character          transa
+         character 	    matdescra(*)
+         integer            m
+         double precision   alpha
+         integer            indx(*), pntrb(*), pntre(*)
+         double precision   val(*)
+         double precision   y(*), x(*)
+        end subroutine  mkl_dcsrsv
+      end interface
+ 
+      interface 
+          subroutine mkl_dcsrmv( transa, m, k, alpha, matdescra,
+     $           val, indx, pntrb, pntre,  x, beta, y)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:
+!DEC$& '_MKL_DCSRMV' :: MKL_DCSRMV
+!DEC$ ATTRIBUTES NOMIXED_STR_LEN_ARG :: MKL_DCSRMV
+          character          transa
+          character 	 matdescra(*)
+          integer            m,  k
+          double precision   alpha, beta
+          integer            indx(*), pntrb(*), pntre(*)
+          double precision   val(*)
+          double precision   y(*), x(*)
+        end subroutine  mkl_dcsrmv
+      end interface
+      interface to
+           subroutine mkl_dcsrgemv( transa, m, 
+     $           a, ia, ja,  x, y)
+!DEC$ ATTRIBUTES C, REFERENCE,  ALIAS:
+!DEC$& '_MKL_DCSRGEMV' :: MKL_DCSRGEMV
+!DEC$ ATTRIBUTES NOMIXED_STR_LEN_ARG :: MKL_DCSRGEMV
+           character          transa
+           integer            m
+           integer 		 ia(*), ja(*)
+           double precision   a(*)
+           double precision   y(*), x(*)
+        end subroutine  mkl_dcsrgemv
+      end interface
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DFGMRES' :: DFGMRES
+      EXTERNAL DFGMRES
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DFGMRES_INIT' :: DFGMRES_INIT
+      EXTERNAL DFGMRES_INIT
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DFGMRES_CHECK' :: DFGMRES_CHECK
+      EXTERNAL DFGMRES_CHECK
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DFGMRES_GET' :: DFGMRES_GET
+      EXTERNAL DFGMRES_GET
+ 
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DCOPY' :: DCOPY
+      EXTERNAL DCOPY
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DAXPY' :: DAXPY
+      EXTERNAL DAXPY
+
+!DEC$ ATTRIBUTES C, REFERENCE, ALIAS:'_DNRM2' :: DNRM2
+

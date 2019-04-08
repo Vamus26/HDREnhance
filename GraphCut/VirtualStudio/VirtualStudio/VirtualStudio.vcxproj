@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{01DFB1B8-A8DE-413F-8338-09816762B638}</ProjectGuid>
+    <RootNamespace>VirtualStudio</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>15.0.28127.55</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$C:\Users\LukasNew\Desktop\masterprojekt\usingphotograhsenhance\VirtualStudio\VirtualStudio</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir>$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>$(VC_LibraryPath_x86);$(WindowsSDK_LibraryPath_x86);$(NETFXKitsDir)Lib\um\x86;$C:\Users\LukasNew\Desktop\masterprojekt\usingphotograhsenhance\VirtualStudio\VirtualStudio</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\LasPack\;$(SolutionDir)\src\Stereo\ScenePoints\;$(SolutionDir)\src\VideoEnhancer\;$(SolutionDir)\libs\mkl_8.1\include;$(SolutionDir)\src\MotionModel\fmatrix;$(SolutionDir)\src\MotionModel\;$(SolutionDir)\src\FeatureLib\;$(SolutionDir)\src\Blackflow;$(SolutionDir)\src\GCFlow\maxflow\adjacency_list;$(SolutionDir)\src\GCFlow\maxflow;$(SolutionDir)\src\MSR_Flow;$(SolutionDir)\src\ANN;$(SolutionDir)\src\SuperRes;$(SolutionDir)\src\GCFlow\;$(SolutionDir)\src\MVFlow\;$(SolutionDir)\src\test\;$(SolutionDir)\src\Renderer\;$(SolutionDir)\src\Flow\;$(SolutionDir)\src\UI\;$(SolutionDir)\src\Stereo\;$(SolutionDir)\src\MeanShiftSeg\prompt;$(SolutionDir)\src\Stereo\PoisonBlending\;$(SolutionDir)\src\Stereo\GC_Stitch;$(SolutionDir)\src\MeanShiftSeg\edge;$(SolutionDir)\src\MeanShiftSeg\segm;$(SolutionDir)\src\Segmentation\;$(SolutionDir)\src\tifflib\include\;$(SolutionDir)\src\StreamPixIO\;$(SolutionDir)\src\Rig;$(SolutionDir)\src\OptParser\;$(SolutionDir)\src\ImageLib\;$(SolutionDir)\src\General;$(SolutionDir)\src\Driver;$(SolutionDir)\src\Disk;$(SolutionDir)\src\Camera;$(SolutionDir)\src\Calibration;$(SolutionDir)\src\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_USE_32BIT_TIME_T;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libtiff.lib;comctl32.lib;wsock32.lib;ANN.lib;mkl_c.lib;CLAPACK.lib;BLAS.lib;libF77.lib;libI77.lib;fltk2.lib;minpack.lib;libguide40.lib;LASPack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\CLAPACK3\lib\;$(SolutionDir)libs\mkl_8.1\ia32\lib\;$(SolutionDir)src\LASPack\lib\;$(SolutionDir)src\IntelMKL\lib\;$(SolutionDir)src\fltk\lib\;$(SolutionDir)src\ANN\;$(SolutionDir)src\tifflib\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib; libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>wsock32.lib comctl32.lib %(AdditionalOptions)</AdditionalOptions>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <AdditionalIncludeDirectories>$(SolutionDir)\src\LasPack\;$(SolutionDir)\src\Stereo\ScenePoints\;$(SolutionDir)\src\VideoEnhancer\;$(SolutionDir)\libs\mkl_8.1\include;$(SolutionDir)\src\MotionModel\fmatrix;$(SolutionDir)\src\MotionModel\;$(SolutionDir)\src\FeatureLib\;$(SolutionDir)\src\Blackflow;$(SolutionDir)\src\GCFlow\maxflow\adjacency_list;$(SolutionDir)\src\GCFlow\maxflow;$(SolutionDir)\src\MSR_Flow;$(SolutionDir)\src\ANN;$(SolutionDir)\src\SuperRes;$(SolutionDir)\src\GCFlow\;$(SolutionDir)\src\MVFlow\;$(SolutionDir)\src\test\;$(SolutionDir)\src\Renderer\;$(SolutionDir)\src\Flow\;$(SolutionDir)\src\UI\;$(SolutionDir)\src\Stereo\;$(SolutionDir)\src\MeanShiftSeg\prompt;$(SolutionDir)\src\Stereo\PoisonBlending\;$(SolutionDir)\src\Stereo\GC_Stitch;$(SolutionDir)\src\MeanShiftSeg\edge;$(SolutionDir)\src\MeanShiftSeg\segm;$(SolutionDir)\src\Segmentation\;$(SolutionDir)\src\tifflib\include\;$(SolutionDir)\src\StreamPixIO\;$(SolutionDir)\src\Rig;$(SolutionDir)\src\OptParser\;$(SolutionDir)\src\ImageLib\;$(SolutionDir)\src\General;$(SolutionDir)\src\Driver;$(SolutionDir)\src\Disk;$(SolutionDir)\src\Camera;$(SolutionDir)\src\Calibration;$(SolutionDir)\src\</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_USE_32BIT_TIME_T;_CRT_SECURE_NO_DEPRECATE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>libtiff.lib;comctl32.lib;wsock32.lib;ANN.lib;mkl_c.lib;CLAPACK.lib;BLAS.lib;libF77.lib;libI77.lib;fltk2.lib;minpack.lib;libguide40.lib;LASPack.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>$(SolutionDir)libs\CLAPACK3\lib\;$(SolutionDir)libs\mkl_8.1\ia32\lib\;$(SolutionDir)src\LASPack\lib\;$(SolutionDir)src\IntelMKL\lib\;$(SolutionDir)src\fltk\lib\;$(SolutionDir)src\ANN\;$(SolutionDir)src\tifflib\lib\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <IgnoreSpecificDefaultLibraries>libcmt.lib; libcmtd.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <LargeAddressAware>true</LargeAddressAware>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalOptions>wsock32.lib comctl32.lib %(AdditionalOptions)</AdditionalOptions>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+      <UseLibraryDependencyInputs>false</UseLibraryDependencyInputs>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\BlackFlow\derivatives.c" />
+    <ClCompile Include="..\src\BlackFlow\disconts.c" />
+    <ClCompile Include="..\src\BlackFlow\filter.c" />
+    <ClCompile Include="..\src\BlackFlow\FlowHelper.cpp" />
+    <ClCompile Include="..\src\BlackFlow\gnc.c" />
+    <ClCompile Include="..\src\BlackFlow\image-io.c" />
+    <ClCompile Include="..\src\BlackFlow\image_stats.c" />
+    <ClCompile Include="..\src\BlackFlow\pyramid-sor.c" />
+    <ClCompile Include="..\src\BlackFlow\pyramid.c" />
+    <ClCompile Include="..\src\BlackFlow\sor.c" />
+    <ClCompile Include="..\src\BlackFlow\utils.c" />
+    <ClCompile Include="..\src\BlackFlow\warp-back.c" />
+    <ClCompile Include="..\src\BlackFlow\warp.c" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator-CamMatrices.cpp" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator-FileNames.cpp" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator-NoahLarry.cpp" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator-Params.cpp" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator-PointExtraction.cpp" />
+    <ClCompile Include="..\src\Calibration\RigCalibrator.cpp" />
+    <ClCompile Include="..\src\Camera\Camera-Accessors.cpp" />
+    <ClCompile Include="..\src\Camera\Camera-Checks.cpp" />
+    <ClCompile Include="..\src\Camera\Camera-FileNames.cpp" />
+    <ClCompile Include="..\src\Camera\Camera-Planes.cpp" />
+    <ClCompile Include="..\src\Camera\Camera.cpp" />
+    <ClCompile Include="..\src\Camera\CameraMats-Checks.cpp" />
+    <ClCompile Include="..\src\Camera\CameraMats-IO.cpp" />
+    <ClCompile Include="..\src\Camera\CameraMats-Proj.cpp" />
+    <ClCompile Include="..\src\Camera\CameraMats.cpp" />
+    <ClCompile Include="..\src\Disk\Disk.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Features-Debug.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Features.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Flow.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Generic.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Preprocess.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-Stereo.cpp" />
+    <ClCompile Include="..\src\Driver\Driver-temp.cpp" />
+    <ClCompile Include="..\src\Driver\Driver.cpp" />
+    <ClCompile Include="..\src\FeatureLib\FeatureMatcher.cpp" />
+    <ClCompile Include="..\src\FeatureLib\FeatureRenderer.cpp" />
+    <ClCompile Include="..\src\FeatureLib\Features.cpp" />
+    <ClCompile Include="..\src\Flow\Flow-DataCost.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-GraphCut.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Load.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Params.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow-Process.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\Flow\Flow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\GCFlow-params.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\GCFlow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\GCFlow\maxflow\adjacency_list\graph.cpp" />
+    <ClCompile Include="..\src\GCFlow\maxflow\adjacency_list\maxflow.cpp" />
+    <ClCompile Include="..\src\General\ColorHelper.cpp" />
+    <ClCompile Include="..\src\General\Debug.cpp" />
+    <ClCompile Include="..\src\General\Definitions.cpp" />
+    <ClCompile Include="..\src\General\MathHelper.cpp" />
+    <ClCompile Include="..\src\General\Timer.cpp" />
+    <ClCompile Include="..\src\General\Transform-2x2.cpp" />
+    <ClCompile Include="..\src\General\Transform-4x4.cpp" />
+    <ClCompile Include="..\src\ImageLib\Image.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageIO-Tiff.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageIO.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-Demosiac.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-DHW.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageProcessing-DirSmooth.cpp" />
+    <ClCompile Include="..\src\ImageLib\ImageProcessing.cpp" />
+    <ClCompile Include="..\src\ImageLib\RefCntMem.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\Matting\matting.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdge.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdgeDetect.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgEdgeList.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgGlobalFc.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\edge\BgImage.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\edison.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\globalFnc.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\libppm.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\prompt\parser.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\segm\ms.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\segm\msImageProcessor.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\segm\msSysPrompt.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\segm\RAList.cpp" />
+    <ClCompile Include="..\src\MeanShiftSeg\segm\rlist.cpp" />
+    <ClCompile Include="..\src\MotionModel\fmatrix\fmatrix.c" />
+    <ClCompile Include="..\src\MotionModel\fmatrix\matrix.c" />
+    <ClCompile Include="..\src\MotionModel\fmatrix\triangulate.c" />
+    <ClCompile Include="..\src\MotionModel\fmatrix\vector.c" />
+    <ClCompile Include="..\src\MotionModel\horn.cpp" />
+    <ClCompile Include="..\src\MotionModel\Motion.cpp" />
+    <ClCompile Include="..\src\MotionModel\MotionFromMatches.cpp" />
+    <ClCompile Include="..\src\MotionModel\PiecewiseMotion.cpp" />
+    <ClCompile Include="..\src\MSR_Flow\FloatImagePyramid.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-DataCalc.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-Debug.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-params.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow-solver.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\MVFlow\MVFlow.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\OptParser\OptFileParser-Params.cpp" />
+    <ClCompile Include="..\src\OptParser\OptFileParser.cpp" />
+    <ClCompile Include="..\src\Renderer\Draw.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-CameraPath.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-Checks.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-Debug.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-FileNames.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-Params.cpp" />
+    <ClCompile Include="..\src\Rig\Rig-Planes.cpp" />
+    <ClCompile Include="..\src\Rig\Rig.cpp" />
+    <ClCompile Include="..\src\Rig\SS_Setup-Params.cpp" />
+    <ClCompile Include="..\src\Rig\SS_Setup.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment-Debug.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment-IO.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment-SegData.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment-SpatialNeighs.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment-ViewNeighs.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segment.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segmentation-Debug.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segmentation-IO.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segmentation.cpp" />
+    <ClCompile Include="..\src\Segmentation\SegmentBreaker-Params.cpp" />
+    <ClCompile Include="..\src\Segmentation\SegmentBreaker.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segmenter-Params.cpp" />
+    <ClCompile Include="..\src\Segmentation\Segmenter.cpp" />
+    <ClCompile Include="..\src\Stereo\CamFrameContext.cpp" />
+    <ClCompile Include="..\src\Stereo\GC_Stitch\CCLabeler.cpp" />
+    <ClCompile Include="..\src\Stereo\GC_Stitch\PiecesBlender.cpp" />
+    <ClCompile Include="..\src\Stereo\GC_Stitch\RegistrationDefs.cpp" />
+    <ClCompile Include="..\src\Stereo\PoisonBlending\BlendSolver.cpp" />
+    <ClCompile Include="..\src\Stereo\PoisonBlending\SparseSolver.cpp" />
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver-Color.cpp" />
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver-FileNames.cpp" />
+    <ClCompile Include="..\src\Stereo\PoisonBlending\VideoSolver.cpp" />
+    <ClCompile Include="..\src\Stereo\ScenePoints\PCloudSegmenter.cpp" />
+    <ClCompile Include="..\src\Stereo\ScenePoints\Plane.cpp" />
+    <ClCompile Include="..\src\Stereo\ScenePoints\PlaneFromPoints.cpp" />
+    <ClCompile Include="..\src\Stereo\ScenePoints\PointCloud.cpp" />
+    <ClCompile Include="..\src\Stereo\ScenePoints\ScenePoints.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-BP-Init.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-BP.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-Debug.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-FileNames.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-Init.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-Load.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-Params.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo-StaticData.cpp" />
+    <ClCompile Include="..\src\Stereo\Stereo.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-FileNames.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Flow.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-IO.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Matte.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-NVI.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction-Params.cpp" />
+    <ClCompile Include="..\src\Stereo\StereoReconstruction.cpp" />
+    <ClCompile Include="..\src\StreamPixIO\StreamPixIO.cpp" />
+    <ClCompile Include="..\src\SuperRes\SuperRes-BP.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes-Params.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes-Training.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\SuperRes\SuperRes.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\test\SampleTest.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\SegVisWin.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\SuperResWin.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\UI_Defs.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\UI\VStudioWin.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Data.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Matching.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Params.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Render.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-SuperRes.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer-Training.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\src\VideoEnhancer\VideoEnhancer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\BlackFlow\FlowHelper.h" />
+    <ClInclude Include="..\src\BlackFlow\incremental.h" />
+    <ClInclude Include="..\src\BlackFlow\planar.h" />
+    <ClInclude Include="..\src\BlackFlow\robust.h" />
+    <ClInclude Include="..\src\Calibration\RigCalibrator.h" />
+    <ClInclude Include="..\src\Camera\Camera.h" />
+    <ClInclude Include="..\src\Camera\CameraDefs.h" />
+    <ClInclude Include="..\src\Camera\CameraMats.h" />
+    <ClInclude Include="..\src\Camera\CameraNeigh.h" />
+    <ClInclude Include="..\src\Disk\Disk.h" />
+    <ClInclude Include="..\src\Driver\Driver.h" />
+    <ClInclude Include="..\src\Driver\GenericOpts.h" />
+    <CustomBuild Include="..\src\FeatureLib\FeatureDefs.h" />
+    <CustomBuild Include="..\src\FeatureLib\FeatureMatcher.h" />
+    <CustomBuild Include="..\src\FeatureLib\FeatureRenderer.h" />
+    <CustomBuild Include="..\src\FeatureLib\Features.h" />
+    <CustomBuild Include="..\src\Flow\Flow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\GCFlow\GCFlow.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <ClInclude Include="..\src\GCFlow\maxflow\adjacency_list\block.h" />
+    <ClInclude Include="..\src\GCFlow\maxflow\adjacency_list\graph.h" />
+    <ClInclude Include="..\src\GCFlow\maxflow\energy.h" />
+    <ClInclude Include="..\src\General\ColorHelper.h" />
+    <ClInclude Include="..\src\General\Debug.h" />
+    <ClInclude Include="..\src\General\Definitions.h" />
+    <ClInclude Include="..\src\General\MathHelper.h" />
+    <ClInclude Include="..\src\General\Timer.h" />
+    <ClInclude Include="..\src\General\Transform-2x2.h" />
+    <ClInclude Include="..\src\General\Transform-3x3.h" />
+    <ClInclude Include="..\src\General\Transform-4x4.h" />
+    <ClInclude Include="..\src\ImageLib\Image.h" />
+    <ClInclude Include="..\src\ImageLib\ImageIO.h" />
+    <ClInclude Include="..\src\ImageLib\ImageProcessing.h" />
+    <ClInclude Include="..\src\ImageLib\RefCntMem.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgDefaults.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdge.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdgeDetect.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgEdgeList.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\edge\BgImage.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\defs.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\edison.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\error.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\flags.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\imfilt.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\libppm.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\prompt\parser.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\ms.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\msImageProcessor.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\msSys.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\RAList.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\rlist.h" />
+    <ClInclude Include="..\src\MeanShiftSeg\segm\tdef.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\colin_defines.h" />
+    <ClInclude Include="..\src\MotionModel\fmatrix\defines.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\fmatrix.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\lapack.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\matrix.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\minpack.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\my_types.h" />
+    <ClInclude Include="..\src\MotionModel\fmatrix\triangulate.h" />
+    <CustomBuild Include="..\src\MotionModel\fmatrix\vector.h" />
+    <CustomBuild Include="..\src\MotionModel\horn.h" />
+    <CustomBuild Include="..\src\MotionModel\Motion.h" />
+    <CustomBuild Include="..\src\MotionModel\MotionFromMatches.h" />
+    <CustomBuild Include="..\src\MotionModel\PiecewiseMotion.h" />
+    <CustomBuild Include="..\src\MSR_Flow\FloatImagePyramid.h" />
+    <ClInclude Include="..\src\MVFlow\MVFlow.h" />
+    <ClInclude Include="..\src\OptParser\OptFileParser.h" />
+    <ClInclude Include="..\src\Renderer\Draw.h" />
+    <ClInclude Include="..\src\Rig\Rig.h" />
+    <ClInclude Include="..\src\Rig\SS_Setup.h" />
+    <ClInclude Include="..\src\Segmentation\Segment-Bounds.h" />
+    <ClInclude Include="..\src\Segmentation\Segment-mem.h" />
+    <ClInclude Include="..\src\Segmentation\Segment-SegData.h" />
+    <ClInclude Include="..\src\Segmentation\Segment-SpatialNeighs.h" />
+    <ClInclude Include="..\src\Segmentation\Segment-ViewNeighs.h" />
+    <ClInclude Include="..\src\Segmentation\Segment.h" />
+    <ClInclude Include="..\src\Segmentation\Segmentation.h" />
+    <ClInclude Include="..\src\Segmentation\SegmentBreaker.h" />
+    <ClInclude Include="..\src\Segmentation\Segmenter.h" />
+    <ClInclude Include="..\src\Stereo\CamFrameContext.h" />
+    <ClInclude Include="..\src\Stereo\GC_Stitch\CCLabeler.h" />
+    <ClInclude Include="..\src\Stereo\GC_Stitch\GC_Stitch_Defs.h" />
+    <ClInclude Include="..\src\Stereo\GC_Stitch\PiecesBlender.h" />
+    <ClInclude Include="..\src\Stereo\GC_Stitch\RegistrationDefs.h" />
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\BlendSolver.h" />
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\SparseSolver.h" />
+    <CustomBuild Include="..\src\Stereo\PoisonBlending\VideoSolver.h" />
+    <ClInclude Include="..\src\Stereo\ScenePoints\PCloudSegmenter.h" />
+    <ClInclude Include="..\src\Stereo\ScenePoints\Plane.h" />
+    <ClInclude Include="..\src\Stereo\ScenePoints\PlaneFromPoints.h" />
+    <ClInclude Include="..\src\Stereo\ScenePoints\PointCloud.h" />
+    <ClInclude Include="..\src\Stereo\ScenePoints\ScenePoints.h" />
+    <ClInclude Include="..\src\Stereo\Stereo.h" />
+    <ClInclude Include="..\src\Stereo\StereoReconstruction.h" />
+    <ClInclude Include="..\src\StreamPixIO\StreamPixDefs.h" />
+    <ClInclude Include="..\src\StreamPixIO\StreamPixIO.h" />
+    <CustomBuild Include="..\src\SuperRes\SuperRes.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\test\SampleTest.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\SegVisWin.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\SuperResWin.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\UI_Defs.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\UI\VStudioWin.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+    <CustomBuild Include="..\src\VideoEnhancer\VideoEnhancer.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\BlackFlow\FlowHelper.inl" />
+    <None Include="..\src\General\Transform-2x2.inl" />
+    <None Include="..\src\General\Transform-3x3.inl" />
+    <None Include="..\src\ImageLib\Image.inl" />
+    <None Include="..\src\ImageLib\ImageIO-TGA.inl" />
+    <None Include="..\src\ImageLib\ImageIO.inl" />
+    <None Include="..\src\ImageLib\ImageProcessing.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\todo.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

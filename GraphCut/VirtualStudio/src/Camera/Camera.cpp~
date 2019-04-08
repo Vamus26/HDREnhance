@@ -1,0 +1,89 @@
+#include "Camera.h"
+#include "Disk.h"
+
+Camera::Camera(string cameraDir)
+{
+	this->path = cameraDir;
+	this->id = Disk::GetBaseDirName(this->path);
+
+	CheckForBasicData();
+
+	string framesPattern = getFramesPattern();
+	this->frameCount = Disk::NumOfMatchesInPattern(framesPattern);
+
+	string cameraMatsFN = GetCameraMatsFN();
+	if(Disk::DoesFileExist(cameraMatsFN))
+	{
+		this->cameraMats.ReadCamera(cameraMatsFN);
+	}
+
+	readScenePts();
+}
+
+void Camera::Recenter(const CameraMats refCamMats)
+{
+	this->cameraMats.Recenter(refCamMats);
+	recenterScenePts(refCamMats);
+}
+
+
+void Camera::PrintCamNeighs()
+{
+	printf("Cam-%s neighs:\n", this->id.c_str());
+	for(uint iNeigh = 0; iNeigh < this->cameraNeighs.size(); iNeigh++)
+	{
+		printf("\tcam-%s at dist - %f\n",
+				this->cameraNeighs[iNeigh].id.c_str(), 
+				this->cameraNeighs[iNeigh].dist);
+	}
+}
+
+void Camera::WriteScenePts()
+{
+	string fileName = GetCameraScenePtsFN();
+	ofstream outStream(fileName.c_str());
+	ENSURE(outStream.is_open());
+
+	outStream << this->scenePoints.size() << "\n";
+	for(uint iPoint = 0; iPoint < this->scenePoints.size(); iPoint++)
+	{
+		this->scenePoints[iPoint].Write(outStream);
+	}
+	
+	outStream.close();
+}
+
+void Camera::readScenePts()
+{
+	ENSURE(this->scenePoints.size() == 0);
+
+	string fileName = GetCameraScenePtsFN();
+	if(Disk::DoesFileExist(fileName))
+	{
+		ifstream inStream(fileName.c_str());
+		ENSURE(inStream.is_open());
+
+		int pointCount = -1;
+		inStream >> pointCount;
+		ENSURE(pointCount != -1);
+
+		for(int iPoint = 0; iPoint < pointCount; iPoint++)
+		{
+			CVector3 scenePoint;
+			scenePoint.Read(inStream);
+			this->scenePoints.push_back(scenePoint);
+		}
+
+		inStream.close();
+	}
+
+
+}
+
+void Camera::recenterScenePts(const CameraMats refCamMats)
+{
+	for(uint iPoint = 0; iPoint < this->scenePoints.size(); iPoint++)
+	{
+		this->scenePoints[iPoint] = refCamMats.transformCoordSys(this->scenePoints[iPoint]);	
+	}
+}
