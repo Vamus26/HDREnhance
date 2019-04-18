@@ -32,6 +32,7 @@ int main(int args, char *argv[])
 
 	OptFileParser optionsParser;
 	OptFileParser::OptFileParams params = optionsParser.Load(argv[1], argv + 2);
+	params.Dump();
 
 	Driver driver(params);
 	driver.Start();

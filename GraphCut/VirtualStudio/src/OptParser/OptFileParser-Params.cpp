@@ -25,6 +25,7 @@ void OptFileParser::OptFileParams::Dump()
 	printf("  Seed: %u\n", seed);
 	printf("  overwriteResults: %i\n", overwriteResults);
 	printf("  App OP: ");
+	//appOP = OP_RECONSTRUCT_VIDEO;
 	switch(appOP)
 	{
 		

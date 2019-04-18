@@ -20,6 +20,8 @@ Rig::~Rig()
 void Rig::Load(RigParams rigParams)
 {
 	this->params = rigParams;
+	//this->params.frameSeq.startIndex = 0;
+	//this->params.frameSeq.endIndex = 1;
 	Disk::MakeDir(this->params.outDir);
 	loadCameras();
 	if(this->params.frameSeq.startIndex  == -1)

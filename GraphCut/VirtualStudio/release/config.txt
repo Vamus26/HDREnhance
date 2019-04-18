@@ -1,0 +1,8 @@
+seed=1234
+appOP=OP_RECONSTRUCT_VIDEO
+overwriteResults=true
+Rig.camera= ..\release\IMGcamera_0
+Rig.camera= ..\release\IMGcamera_1
+Rig.camNeighPair= IMGcamera_0 IMGcamera_1 1.0f
+Rig.startFrameIndex = 0
+Rig.endFrameIndex = 1
