@@ -1,9 +1,0 @@
-- pick right smoothing value before segmentation
-- use edges in mean shift segmentation
-- auto determine noise in images
-- use structure from motion points to change datacosts
-- update visual studio
-- make constants sensitivite to half size - i.e. STEREO_OccDepthThreshold
-- weigh each color channel differently
-- data costs - squaring when col is between 0-1 is not the same as 0 - 255
-- data costs - sample errors, use bilinear interpol?

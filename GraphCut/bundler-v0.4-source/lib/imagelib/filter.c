@@ -149,7 +149,7 @@ double img_laplacian(img_t *img, int x, int y) {
 }
 
 #ifdef WIN32
-static double erf (double x) {
+static double erf2 (double x) {
   int sign;
   double t;
 
@@ -191,7 +191,7 @@ double *compute_gaussian_filter(double sigma, double num_dev, int *size) {
 
     /* Fill in the filter */
     for (x = -rad; x <= rad; x++) {
-	filter[x + rad] = 0.5 * (erf((x + 0.5) / (sqrt(2.0) * sigma)) - erf((x - 0.5) / (sqrt(2.0) * sigma)));
+	filter[x + rad] = 0.5 * (erf2((x + 0.5) / (sqrt(2.0) * sigma)) - erf2((x - 0.5) / (sqrt(2.0) * sigma)));
 	sum += filter[x + rad];
     }
 

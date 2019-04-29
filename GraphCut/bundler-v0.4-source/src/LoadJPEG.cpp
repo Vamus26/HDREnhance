@@ -20,7 +20,7 @@
 #include <assert.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "jpeglib.h"
+#include "../lib/jpeg/src/jpeglib.h"
 
 #include "image.h"
 
