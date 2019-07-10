@@ -8,29 +8,18 @@ function gc_example()
 close all
 
 % read an image
-%im = im2double(imread('outdoor_small.jpg'));
-fi = im2double(imread('outdoor_small.jpg'));%'IMGcamera_0-vid-00000.tif'));%ldr image
-%wlImage = im2double(imread('IMGcamera_0-vid-00000.tif'));%forw image
-%wrImage = im2double(imread('IMGcamera_0-vid-00000.tif'));%backw image
-%wl = ToVector(wlImage);
-%wr = ToVector(wrImage);
-%fiV = ToVector(fi);
-frame_index_wl = 0;
-frame_index_wr = 10;
-frame_index_fi = 5;
+im = im2double(imread('outdoor_small.jpg'));
 
-%Dres = zeros( size(wl) );
-%Dvec = ToVector(Dres);
-sz = size(fi);
+sz = size(im);
 
 % try to segment the image into k different regions
-k = 3;
+k = 4;
 
 % color space distance
 distance = 'sqEuclidean';
 
 % cluster the image colors into k regions
-data = ToVector(fi);
+data = ToVector(im);
 [idx c] = kmeans(data, k, 'distance', distance,'maxiter',200);
 
 % calculate the data cost per cluster center
@@ -44,28 +33,6 @@ for ci=1:k
     Dc(:,:,ci) = reshape(sum((dif*icv).*dif./2,2),sz(1:2));
 end
 
-c = 0.3;
-%for indx=1:length(Dvec) 
-%end
-
-
-%loss functions:
-%Dc(p,l) =||wl(p)-fi(p)|| eukl. dist Dc = norm(wl - fi)
-%Df(p,l) = 1-motion confidence(wl(p)) 
-%Dd(l,fi) = |frame index(wl)-i| / |frame index(wright)-frame index(wleft)|
-
-%function [vals,derivs] = myCostFunc(params)
-% Extract the current design variable values from the parameter object, params.
-%x = params.Value;
-% Compute the requirements (objective and constraint violations) and 
-% assign them to vals, the output of the cost function. 
-%vals.F = x.^2;
-%vals.Cleq = x.^2-4*x+1;
-% Compute the cost and constraint derivatives.
-%derivs.F = 2*x;
-%derivs.Cleq = 2*x-4;
-%end
-
 % cut the graph
 
 % smoothness term: 
@@ -73,16 +40,14 @@ c = 0.3;
 Sc = ones(k) - eye(k);
 % spatialy varying part
 % [Hc Vc] = gradient(imfilter(rgb2gray(im),fspecial('gauss',[3 3]),'symmetric'));
-[Hc Vc] = SpatialCues(fi);
+[Hc Vc] = SpatialCues(im);
 
 gch = GraphCut('open', Dc, 10*Sc, exp(-Vc*5), exp(-Hc*5));
 [gch L] = GraphCut('expand',gch);
-[gch se de] = GraphCut('energy', gch)
-[gch e] = GraphCut('energy', gch)
 gch = GraphCut('close', gch);
 
 % show results
-imshow(fi);
+imshow(im);
 hold on;
 PlotLabels(L);
 
@@ -123,19 +88,3 @@ for b=1:size(im,3)
     vC = max(vC, abs(imfilter(im(:,:,b), vf, 'symmetric')));
     hC = max(hC, abs(imfilter(im(:,:,b), vf', 'symmetric')));
 end
-%-----------------------------------------------%
-function [cost_mat] = myCostFunc(pxl,label)
-    if label ==fi
-        cost_mat(pxl)=c;
-    elseif label(pxl)==null
-        cost_mat(pxl)=inf;
-    else
-        Dc = norm(label(pxl) - fi(pxl));
-        Df = 1-1;%TODO change motion_confidence(wl(indx));
-        if label ==wl
-            Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
-        else
-            Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
-        end
-        cost_mat(pxl)=Dc+Df+Dd;
-    end
