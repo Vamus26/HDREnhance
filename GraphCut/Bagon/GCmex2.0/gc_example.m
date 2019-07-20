@@ -9,15 +9,18 @@ close all
 
 % read an image
 %im = im2double(imread('outdoor_small.jpg'));
-fi = im2double(imread('outdoor_small.jpg'));%'IMGcamera_0-vid-00000.tif'));%ldr image
-%wlImage = im2double(imread('IMGcamera_0-vid-00000.tif'));%forw image
-%wrImage = im2double(imread('IMGcamera_0-vid-00000.tif'));%backw image
+fi = hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');
+%fi = im2double(imread('outdoor_small.jpg'));%'IMGcamera_0-vid-00000.tif'));%ldr image
+wlImage = hdrimread('br-00058.hdr');
+%wlImage = im2double(imread('outdoor_small2.jpg'));%im2double(imread('IMGcamera_0-vid-00000.tif'));%forw image
+wrImage = hdrimread('br-00066.hdr');
+%wrImage = im2double(imread('outdoor_small3.jpg'));%im2double(imread('IMGcamera_0-vid-00000.tif'));%backw image
 %wl = ToVector(wlImage);
 %wr = ToVector(wrImage);
 %fiV = ToVector(fi);
-frame_index_wl = 0;
-frame_index_wr = 10;
-frame_index_fi = 5;
+frame_index_wl = 58;%0;
+frame_index_wr = 62;%10;
+frame_index_fi = 66;%5;
 
 %Dres = zeros( size(wl) );
 %Dvec = ToVector(Dres);
@@ -25,6 +28,7 @@ sz = size(fi);
 
 % try to segment the image into k different regions
 k = 3;
+c = 0.3;
 
 % color space distance
 distance = 'sqEuclidean';
@@ -35,6 +39,22 @@ data = ToVector(fi);
 
 % calculate the data cost per cluster center
 Dc = zeros([sz(1:2) k],'single');
+Dc_new = zeros([sz(1:2) k],'single');
+%Dc_new(:,:,2) = c;
+
+for rows=1:size(fi,1)
+    for cols=1:size(fi,2)
+      Dc_2 = norm(wlImage(rows,cols) - fi(rows,cols));
+      Df = 1-1;%TODO change motion_confidence(wl(indx));
+      Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
+      Dc_new(rows,cols,1)=Dc_2+Df+Dd;
+      Dc_2 = norm(wrImage(rows,cols) - fi(rows,cols));
+      Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
+      Dc_new(rows,cols,3)=Dc_2+Df+Dd;
+      Dc_new(rows,cols,2) = 5;%0.3;
+    end
+end
+
 for ci=1:k
     % use covariance matrix per cluster
     icv = inv(cov(data(idx==ci,:)));    
@@ -44,7 +64,7 @@ for ci=1:k
     Dc(:,:,ci) = reshape(sum((dif*icv).*dif./2,2),sz(1:2));
 end
 
-c = 0.3;
+
 %for indx=1:length(Dvec) 
 %end
 
@@ -75,7 +95,7 @@ Sc = ones(k) - eye(k);
 % [Hc Vc] = gradient(imfilter(rgb2gray(im),fspecial('gauss',[3 3]),'symmetric'));
 [Hc Vc] = SpatialCues(fi);
 
-gch = GraphCut('open', Dc, 10*Sc, exp(-Vc*5), exp(-Hc*5));
+gch = GraphCut('open', Dc_new, 10*Sc, exp(-Vc*5), exp(-Hc*5));
 [gch L] = GraphCut('expand',gch);
 [gch se de] = GraphCut('energy', gch)
 [gch e] = GraphCut('energy', gch)
@@ -85,8 +105,23 @@ gch = GraphCut('close', gch);
 imshow(fi);
 hold on;
 PlotLabels(L);
-
-
+%combine labels per pixel for result
+mix = zeros([sz(1:2) k],'double');
+for rows=1:size(Dc_new,1)
+    for cols=1:size(Dc_new,2)
+        if (Dc_new(rows,cols,1)<Dc_new(rows,cols,2))&&(Dc_new(rows,cols,1)<Dc_new(rows,cols,3))
+           mix(rows,cols,:)= wlImage(rows,cols,:);
+        elseif (Dc_new(rows,cols,3)<Dc_new(rows,cols,2))&&(Dc_new(rows,cols,3)<Dc_new(rows,cols,1))
+            mix(rows,cols,:)= wrImage(rows,cols,:);
+        else
+            mix(rows,cols,:)= fi(rows,cols,:);
+        end
+    end
+end
+rgb = tonemap(mix);
+imwrite(rgb, 'mixrgb.jpg');
+hdrimwrite(mix, 'mixim.hdr');
+imshow(mix)
 
 %---------------- Aux Functions ----------------%
 function v = ToVector(im)
