@@ -102,6 +102,26 @@ clear flow;
 flow(:,:,1) = vx_2;
 flow(:,:,2) = vy_2;
 imflow = flowToColor(flow);
+%mean
+meanImage = imfilter(flow, ones(3)/9);
+sz = size(warpI2);
+motion_conf = zeros(sz(1:2),'double');
+for rows=1:size(meanImage,1)
+    for cols=1:size(meanImage,2)
+        first_angle= atan(warpI2(rows,cols,1)/warpI2(rows,cols,2));
+        sec_angle= atan(meanImage(rows,cols,1)/meanImage(rows,cols,2));
+        
+        angle = first_angle-sec_angle;
+        if (angle > 180)
+            angle = angle-360;
+        elseif (angle <-180)
+            angle = angle+360;
+        end
+        
+        motion_conf(rows,cols)= angle;
+    end
+end
+
 
 figure;imshow(imflow);
 imwrite(imflow,fullfile('output',[example '_ext_flow.jpg']),'quality',100);
