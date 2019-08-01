@@ -42,6 +42,7 @@ Dc = zeros([sz(1:2) k],'single');
 Dc_new = zeros([sz(1:2) k],'single');
 %Dc_new(:,:,2) = c;
 
+%Datacost function
 for rows=1:size(fi,1)
     for cols=1:size(fi,2)
       Dc_2 = norm(wlImage(rows,cols) - fi(rows,cols));
@@ -94,8 +95,36 @@ Sc = ones(k) - eye(k);
 % spatialy varying part
 % [Hc Vc] = gradient(imfilter(rgb2gray(im),fspecial('gauss',[3 3]),'symmetric'));
 [Hc Vc] = SpatialCues(fi);
-
-gch = GraphCut('open', Dc_new, 10*Sc, exp(-Vc*5), exp(-Hc*5));
+%my smoothnessfkt
+Hc_new = zeros(sz(1:2),'single');
+Vc_new = zeros(sz(1:2),'single');
+for rows=1:size(fi,1)
+    for cols=1:size(fi,2)
+        if (cols-1)<=0
+            Hc_new(rows,cols)= inf;
+        else
+        	Hc_new(rows,cols)= smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows,cols-1,1), wlImage(rows,cols-1,2), wlImage(rows,cols-1,3),wrImage(rows,cols-1,1),wrImage(rows,cols-1,2),wrImage(rows,cols-1,3)); 
+        end
+        if (rows-1)<=0
+            Vc_new(rows,cols)= inf;
+        else
+        	Vc_new(rows,cols)= smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows-1,cols,1), wlImage(rows-1,cols,2), wlImage(rows-1,cols,3),wrImage(rows-1,cols,1),wrImage(rows-1,cols,2),wrImage(rows-1,cols,3));
+        end
+        if (cols+1)>size(fi,2)
+        	Hc_new(rows,cols)= Hc_new(rows,cols)+ inf;
+        else
+            Hc_new(rows,cols)= Hc_new(rows,cols)+smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows,cols+1,1), wlImage(rows,cols+1,2), wlImage(rows,cols+1,3),wrImage(rows,cols+1,1),wrImage(rows,cols+1,2),wrImage(rows,cols+1,3));
+        end
+        if (rows+1)>size(fi,1)
+        	Vc_new(rows,cols)= Vc_new(rows,cols)+inf;
+        else
+        	Vc_new(rows,cols)= Vc_new(rows,cols)+smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows+1,cols,1), wlImage(rows+1,cols,2), wlImage(rows+1,cols,3),wrImage(rows+1,cols,1),wrImage(rows+1,cols,2),wrImage(rows+1,cols,3));
+        end
+    end
+end
+%gch = GraphCut('open', Dc, 10*Sc, exp(-Vc*5), exp(-Hc*5));
+%gch = GraphCut('open', Dc_new, Sc, exp(-Vc*5), exp(-Hc*5));
+gch = GraphCut('open', Dc_new, Sc, Vc_new, Hc_new);
 [gch L] = GraphCut('expand',gch);
 [gch se de] = GraphCut('energy', gch)
 [gch e] = GraphCut('energy', gch)
@@ -174,3 +203,23 @@ function [cost_mat] = myCostFunc(pxl,label)
         end
         cost_mat(pxl)=Dc+Df+Dd;
     end
+%-----------------------------------------------%
+function [cost_mat] = smoothCostGrad(s1r,s1g,s1b,s2r,s2g,s2b,t1r,t1g,t1b,t2r,t2g,t2b)
+	gradTextR  = abs( s1r - t1r );
+	gradTextV  = abs( s1g - t1g );
+	gradTextB  = abs( s1b - t1b );
+	gradPatchR  = abs( s2r - t2r );
+	gradPatchV  = abs( s2g - t2g );
+	gradPatchB  = abs( s2b - t2b );
+
+	grad = ((gradTextR + gradTextV + gradTextB) / 3.0 )+ (( gradPatchR + gradPatchV + gradPatchB ) / 3.0);
+	grad= grad +1.0; % to avoid zero division 
+
+    %smoothCostBasic
+    cr = abs( s1r - s2r ) +  abs( t1r - t2r );
+	cg = abs( s1g - s2g ) +  abs( t1g - t2g );
+	cb = abs( s1b - s2b ) +  abs( t1b - t2b );
+	tmp =( ( cr + cg + cb ) / 3.0 );
+    
+	cost_mat = (tmp/ sqrt(grad));  
+    
