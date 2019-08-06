@@ -1,44 +1,105 @@
 function gc_example()
+% An example of how to segment a color image according to pixel colors.
+% Fisrt stage identifies k distinct clusters in the color space of the
+% image. Then the image is segmented according to these regions; each pixel
+% is assigned to its cluster and the GraphCut poses smoothness constraint
+% on this labeling.
 
 close all
 
-% read images
-wlImage = hdrimread('clip_000007.000200.exr');%forw image
-fi = tonemap(hdrimread('clip_000007.000205.exr'));%simulated LDR frame
-wrImage = hdrimread('clip_000007.000210.exr');%backw image
-wlImageTone = tonemap(wlImage);%forw image tonemapped
-wrImageTone = tonemap(wrImage);%backw image tonemapped
+% read an image
+%im = im2double(imread('outdoor_small.jpg'));
+%fi = hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');
+fi = tonemap(hdrimread('clip_000007.000205.exr'));
+%fi = im2double(imread('outdoor_small.jpg'));%'IMGcamera_0-vid-00000.tif'));%ldr image
+wlImage = hdrimread('clip_000007.000200.exr');
+%wlImage = im2double(imread('outdoor_small2.jpg'));%im2double(imread('IMGcamera_0-vid-00000.tif'));%forw image
+wrImage = hdrimread('clip_000007.000210.exr');
+%wrImage = im2double(imread('outdoor_small3.jpg'));%im2double(imread('IMGcamera_0-vid-00000.tif'));%backw image
+%wl = ToVector(wlImage);
+%wr = ToVector(wrImage);
+%fiV = ToVector(fi);
+frame_index_wl = 0;%58;
+frame_index_wr = 10;%62;
+frame_index_fi = 5;%66;
 
-%image index
-frame_index_wl = 0;
-frame_index_fi = 5;
-frame_index_wr = 10;
-
-k = 3;%# different labels
-
+%Dres = zeros( size(wl) );
+%Dvec = ToVector(Dres);
 sz = size(fi);
+
+% try to segment the image into k different regions
+k = 3;
+c = 0.3;
+
+% color space distance
+distance = 'sqEuclidean';
+
+% cluster the image colors into k regions
+data = ToVector(fi);
+[idx c] = kmeans(data, k, 'distance', distance,'maxiter',200);
+
+% calculate the data cost per cluster center
+Dc = zeros([sz(1:2) k],'single');
 Dc_new = zeros([sz(1:2) k],'single');
+%Dc_new(:,:,2) = c;
 
 %Datacost function
 for rows=1:size(fi,1)
     for cols=1:size(fi,2)
-      eukl = double(wlImageTone(rows,cols) - fi(rows,cols));
-      Dc_2 = norm(eukl);
+      Dc_2 = norm(wlImage(rows,cols) - fi(rows,cols));
       Df = 1-1;%TODO change motion_confidence(wl(indx));
       Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,1)=Dc_2+Df+Dd;
-      eukl = double(wrImageTone(rows,cols) - fi(rows,cols));
-      Dc_2 = norm(eukl);
+      Dc_2 = norm(wrImage(rows,cols) - fi(rows,cols));
       Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,3)=Dc_2+Df+Dd;
-      Dc_new(rows,cols,2) = 500;%0.3 originally
+      Dc_new(rows,cols,2) = 500;%0.3;
     end
 end
 
-%smoothness function
+for ci=1:k
+    % use covariance matrix per cluster
+    icv = inv(cov(data(idx==ci,:)));    
+    dif = data - repmat(c(ci,:), [size(data,1) 1]);
+    % data cost is minus log likelihood of the pixel to belong to each
+    % cluster according to its RGB value
+    Dc(:,:,ci) = reshape(sum((dif*icv).*dif./2,2),sz(1:2));
+end
+
+
+%for indx=1:length(Dvec) 
+%end
+
+
+%loss functions:
+%Dc(p,l) =||wl(p)-fi(p)|| eukl. dist Dc = norm(wl - fi)
+%Df(p,l) = 1-motion confidence(wl(p)) 
+%Dd(l,fi) = |frame index(wl)-i| / |frame index(wright)-frame index(wleft)|
+
+%function [vals,derivs] = myCostFunc(params)
+% Extract the current design variable values from the parameter object, params.
+%x = params.Value;
+% Compute the requirements (objective and constraint violations) and 
+% assign them to vals, the output of the cost function. 
+%vals.F = x.^2;
+%vals.Cleq = x.^2-4*x+1;
+% Compute the cost and constraint derivatives.
+%derivs.F = 2*x;
+%derivs.Cleq = 2*x-4;
+%end
+
+% cut the graph
+
+% smoothness term: 
+% constant part
+Sc = ones(k) - eye(k);%original
 Sc_new = [1,1,1;1,1,1;1,1,1];
+% spatialy varying part
+% [Hc Vc] = gradient(imfilter(rgb2gray(im),fspecial('gauss',[3 3]),'symmetric'));
+[Hc Vc] = SpatialCues(fi);
+%my smoothnessfkt
 Hc_new = zeros(sz(1:2),'single');%horizontal cost
-Vc_new = zeros(sz(1:2),'single');%vertical cost
+Vc_new = zeros(sz(1:2),'single');
 for rows=1:size(fi,1)
     for cols=1:size(fi,2)
         if (cols-1)<=0
@@ -51,7 +112,6 @@ for rows=1:size(fi,1)
         else
         	Vc_new(rows,cols)= smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows-1,cols,1), wlImage(rows-1,cols,2), wlImage(rows-1,cols,3),wrImage(rows-1,cols,1),wrImage(rows-1,cols,2),wrImage(rows-1,cols,3));
         end
-%TODO: maybe use at edges
 %        if (cols+1)>size(fi,2)
 %        	Hc_new(rows,cols)= Hc_new(rows,cols)+ inf;
 %        else
@@ -64,10 +124,11 @@ for rows=1:size(fi,1)
 %        end
     end
 end
-
-%graphcut
-gch = GraphCut('open', Dc_new, Sc_new, Vc_new, Hc_new);
-[gch L] = GraphCut('expand',gch); %labels from 0 to (labels-1)- so 0,1,2 here
+%gch = GraphCut('open', Dc, 10*Sc, exp(-Vc*5), exp(-Hc*5));
+%gch = GraphCut('open', Dc_new, Sc, exp(-Vc*5), exp(-Hc*5));
+%gch = GraphCut('open', Dc_new, Sc_new, Vc_new, Hc_new);
+gch = GraphCut('open', Dc, Sc_new, Vc_new, Hc_new);
+[gch L] = GraphCut('expand',gch); %labels von 0 bis (labels-1)
 [gch se de] = GraphCut('energy', gch)
 [gch e] = GraphCut('energy', gch)
 gch = GraphCut('close', gch);
@@ -95,6 +156,12 @@ hdrimwrite(mix, 'mixim.hdr');
 imshow(mix)
 
 %---------------- Aux Functions ----------------%
+function v = ToVector(im)
+% takes MxNx3 picture and returns (MN)x3 vector
+sz = size(im);
+v = reshape(im, [prod(sz(1:2)) 3]);
+
+%-----------------------------------------------%
 function ih = PlotLabels(L)
 
 L = single(L);
@@ -110,7 +177,20 @@ colorbar;
 colormap 'jet';
 
 %-----------------------------------------------%
-%unused so far
+function [hC vC] = SpatialCues(im)
+g = fspecial('gauss', [13 13], sqrt(13));
+dy = fspecial('sobel');
+vf = conv2(g, dy, 'valid');
+sz = size(im);
+
+vC = zeros(sz(1:2));
+hC = vC;
+
+for b=1:size(im,3)
+    vC = max(vC, abs(imfilter(im(:,:,b), vf, 'symmetric')));
+    hC = max(hC, abs(imfilter(im(:,:,b), vf', 'symmetric')));
+end
+%-----------------------------------------------%
 function [cost_mat] = myCostFunc(pxl,label)
     if label ==fi
         cost_mat(pxl)=c;

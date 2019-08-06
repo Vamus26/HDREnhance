@@ -2,11 +2,12 @@ function gc_example()
 
 close all
 
-% read images
+% read an image
+
+fi = tonemap(hdrimread('clip_000007.000205.exr'));
 wlImage = hdrimread('clip_000007.000200.exr');%forw image
-fi = tonemap(hdrimread('clip_000007.000205.exr'));%simulated LDR frame
-wrImage = hdrimread('clip_000007.000210.exr');%backw image
 wlImageTone = tonemap(wlImage);%forw image tonemapped
+wrImage = hdrimread('clip_000007.000210.exr');%backw image
 wrImageTone = tonemap(wrImage);%backw image tonemapped
 
 %image index
@@ -31,14 +32,33 @@ for rows=1:size(fi,1)
       Dc_2 = norm(eukl);
       Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,3)=Dc_2+Df+Dd;
-      Dc_new(rows,cols,2) = 500;%0.3 originally
+      Dc_new(rows,cols,2) = 500;%0.3;
     end
 end
 
-%smoothness function
+%loss functions:
+%Dc(p,l) =||wl(p)-fi(p)|| eukl. dist Dc = norm(wl - fi)
+%Df(p,l) = 1-motion confidence(wl(p)) 
+%Dd(l,fi) = |frame index(wl)-i| / |frame index(wright)-frame index(wleft)|
+
+%function [vals,derivs] = myCostFunc(params)
+% Extract the current design variable values from the parameter object, params.
+%x = params.Value;
+% Compute the requirements (objective and constraint violations) and 
+% assign them to vals, the output of the cost function. 
+%vals.F = x.^2;
+%vals.Cleq = x.^2-4*x+1;
+% Compute the cost and constraint derivatives.
+%derivs.F = 2*x;
+%derivs.Cleq = 2*x-4;
+%end
+
+% cut the graph
+% smoothness term: 
 Sc_new = [1,1,1;1,1,1;1,1,1];
+%my smoothnessfkt
 Hc_new = zeros(sz(1:2),'single');%horizontal cost
-Vc_new = zeros(sz(1:2),'single');%vertical cost
+Vc_new = zeros(sz(1:2),'single');
 for rows=1:size(fi,1)
     for cols=1:size(fi,2)
         if (cols-1)<=0
@@ -51,7 +71,6 @@ for rows=1:size(fi,1)
         else
         	Vc_new(rows,cols)= smoothCostGrad( wlImage(rows,cols,1), wlImage(rows,cols,2), wlImage(rows,cols,3),wrImage(rows,cols,1),wrImage(rows,cols,2),wrImage(rows,cols,3),wlImage(rows-1,cols,1), wlImage(rows-1,cols,2), wlImage(rows-1,cols,3),wrImage(rows-1,cols,1),wrImage(rows-1,cols,2),wrImage(rows-1,cols,3));
         end
-%TODO: maybe use at edges
 %        if (cols+1)>size(fi,2)
 %        	Hc_new(rows,cols)= Hc_new(rows,cols)+ inf;
 %        else
@@ -65,9 +84,8 @@ for rows=1:size(fi,1)
     end
 end
 
-%graphcut
 gch = GraphCut('open', Dc_new, Sc_new, Vc_new, Hc_new);
-[gch L] = GraphCut('expand',gch); %labels from 0 to (labels-1)- so 0,1,2 here
+[gch L] = GraphCut('expand',gch); %labels von 0 bis (labels-1)
 [gch se de] = GraphCut('energy', gch)
 [gch e] = GraphCut('energy', gch)
 gch = GraphCut('close', gch);
@@ -95,6 +113,12 @@ hdrimwrite(mix, 'mixim.hdr');
 imshow(mix)
 
 %---------------- Aux Functions ----------------%
+function v = ToVector(im)
+% takes MxNx3 picture and returns (MN)x3 vector
+sz = size(im);
+v = reshape(im, [prod(sz(1:2)) 3]);
+
+%-----------------------------------------------%
 function ih = PlotLabels(L)
 
 L = single(L);
@@ -110,7 +134,20 @@ colorbar;
 colormap 'jet';
 
 %-----------------------------------------------%
-%unused so far
+function [hC vC] = SpatialCues(im)
+g = fspecial('gauss', [13 13], sqrt(13));
+dy = fspecial('sobel');
+vf = conv2(g, dy, 'valid');
+sz = size(im);
+
+vC = zeros(sz(1:2));
+hC = vC;
+
+for b=1:size(im,3)
+    vC = max(vC, abs(imfilter(im(:,:,b), vf, 'symmetric')));
+    hC = max(hC, abs(imfilter(im(:,:,b), vf', 'symmetric')));
+end
+%-----------------------------------------------%
 function [cost_mat] = myCostFunc(pxl,label)
     if label ==fi
         cost_mat(pxl)=c;
