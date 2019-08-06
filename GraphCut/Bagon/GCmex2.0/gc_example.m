@@ -3,12 +3,12 @@ function gc_example()
 close all
 
 % read images
-wlImage = hdrimread('clip_000007.000200.exr');%forw image
+wlImage = hdrimread('flooowhdr_forward.hdr');%hdrimread('clip_000007.000200.exr');%forw image
 fi = tonemap(hdrimread('clip_000007.000205.exr'));%simulated LDR frame
-wrImage = hdrimread('clip_000007.000210.exr');%backw image
+wrImage = hdrimread('flooowhdr_back.hdr');%hdrimread('clip_000007.000210.exr');%backw image
 wlImageTone = tonemap(wlImage);%forw image tonemapped
 wrImageTone = tonemap(wrImage);%backw image tonemapped
-
+load('motion_conf_200_210_forward.mat');
 %image index
 frame_index_wl = 0;
 frame_index_fi = 5;
@@ -24,7 +24,7 @@ for rows=1:size(fi,1)
     for cols=1:size(fi,2)
       eukl = double(wlImageTone(rows,cols) - fi(rows,cols));
       Dc_2 = norm(eukl);
-      Df = 1-1;%TODO change motion_confidence(wl(indx));
+      Df = motion_conf(rows,cols);%%1-1;%TODO change motion_confidence(wl(indx));
       Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,1)=Dc_2+Df+Dd;
       eukl = double(wrImageTone(rows,cols) - fi(rows,cols));
@@ -70,6 +70,7 @@ gch = GraphCut('open', Dc_new, Sc_new, Vc_new, Hc_new);
 [gch L] = GraphCut('expand',gch); %labels from 0 to (labels-1)- so 0,1,2 here
 [gch se de] = GraphCut('energy', gch)
 [gch e] = GraphCut('energy', gch)
+[gch L] = GraphCut('swap', gch);
 gch = GraphCut('close', gch);
 
 % show results
@@ -90,8 +91,8 @@ for rows=1:size(Dc_new,1)
     end
 end
 rgb = tonemap(mix);
-imwrite(rgb, 'mixrgb.jpg');
-hdrimwrite(mix, 'mixim.hdr');
+imwrite(rgb, 'mixrgb_with_real.jpg');
+hdrimwrite(mix, 'mixim_with_real.hdr');
 imshow(mix)
 
 %---------------- Aux Functions ----------------%
