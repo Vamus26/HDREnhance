@@ -6,10 +6,10 @@ example = 'hdr_backward';%'BWD_LDR093_099_HDR093_099_SUMMED_FORWARD';
 
 % load the two frames
 
-im3 = hdrimread('clip_000007.000210.exr');%hdrimread('br-00058.hdr');%im2double(imread('hdr-00093.tif'));
-im4 = hdrimread('clip_000007.000200.exr');%hdrimread('br-00066.hdr');%im2double(imread('hdr-00099.tif'));
-im1 = tonemap(im3);%'br-00058_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l093.jpg'));
-im2 = tonemap(hdrimread('clip_000007.000206.exr'));%hdrimread('br-00060_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l095.jpg'));
+im3 = hdrimread('clip_000007.000202.exr');%hdrimread('br-00058.hdr');%im2double(imread('hdr-00093.tif'));
+im4 = hdrimread('clip_000007.000205.exr');%hdrimread('br-00066.hdr');%im2double(imread('hdr-00099.tif'));
+im1 = tonemap(hdrimread('clip_000007.000202.exr'));%'br-00058_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l093.jpg'));
+im2 = tonemap(hdrimread('clip_000007.000203.exr'));%hdrimread('br-00060_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l095.jpg'));
 % set optical flow parameters (see Coarse2FineTwoFrames.m for the definition of the parameters)
 alpha = 0.012;
 ratio = 0.75;
@@ -41,8 +41,8 @@ max(max(vy))
 clear vx;
 clear vy;
 
-im1 = tonemap(hdrimread('clip_000007.000206.exr'));%hdrimread('br-00060_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l095.jpg'));
-im2 = tonemap(hdrimread('clip_000007.000203.exr'));%hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l097.jpg'));
+im1 = tonemap(hdrimread('clip_000007.000203.exr'));%hdrimread('br-00060_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l095.jpg'));
+im2 = tonemap(hdrimread('clip_000007.000204.exr'));%hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l097.jpg'));
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
 
 max(max(vx))
@@ -54,8 +54,8 @@ max(max(vy_2))
 clear vx;
 clear vy;
 
-im1 = tonemap(hdrimread('clip_000007.000203.exr'));%hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l097.jpg'));
-im2 = tonemap(im4);%hdrimread('br-00066_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l099.jpg'));
+im1 = tonemap(hdrimread('clip_000007.000204.exr'));%hdrimread('br-00062_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l097.jpg'));
+im2 = tonemap(hdrimread('clip_000007.000205.exr'));%hdrimread('br-00066_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l099.jpg'));
 [vx,vy,warpI2] = Coarse2FineTwoFrames(im1,im2,para);
 max(max(vx))
 max(max(vy))
@@ -121,7 +121,7 @@ for rows=1:size(meanImage,1)
         motion_conf(rows,cols)= angle;
     end
 end
-
+save('motion_conf_202_205_fwd.mat','motion_conf');
 
 figure;imshow(imflow);
 imwrite(imflow,fullfile('output',[example '_ext_flow.jpg']),'quality',100);

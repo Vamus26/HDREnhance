@@ -3,9 +3,11 @@ function gc_example()
 close all
 
 % read images
-wlImage = hdrimread('flooowhdr_forward.hdr');%hdrimread('clip_000007.000200.exr');%forw image
+%wlImage = hdrimread('flooowhdr_forward.hdr');
+wlImage = hdrimread('clip_000007.000204.exr');%forw image
 fi = tonemap(hdrimread('clip_000007.000205.exr'));%simulated LDR frame
-wrImage = hdrimread('flooowhdr_back.hdr');%hdrimread('clip_000007.000210.exr');%backw image
+%wrImage = hdrimread('flooowhdr_back.hdr');
+wrImage = hdrimread('clip_000007.000206.exr');%backw image
 wlImageTone = tonemap(wlImage);%forw image tonemapped
 wrImageTone = tonemap(wrImage);%backw image tonemapped
 load('motion_conf_200_210_forward.mat');
@@ -27,6 +29,9 @@ for rows=1:size(fi,1)
       Df = motion_conf(rows,cols);%%1-1;%TODO change motion_confidence(wl(indx));
       Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,1)=Dc_2+Df+Dd;
+      %motion conf new, next 2 lines
+      load('motion_conf_200_210_backward.mat');
+      Df = motion_conf(rows,cols);
       eukl = double(wrImageTone(rows,cols) - fi(rows,cols));
       Dc_2 = norm(eukl);
       Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
@@ -91,8 +96,8 @@ for rows=1:size(Dc_new,1)
     end
 end
 rgb = tonemap(mix);
-imwrite(rgb, 'mixrgb_with_real.jpg');
-hdrimwrite(mix, 'mixim_with_real.hdr');
+imwrite(rgb, 'mixrgb_with_extract_1frame.jpg');
+hdrimwrite(mix, 'mixim_with_extract_1frame.hdr');
 imshow(mix)
 
 %---------------- Aux Functions ----------------%
