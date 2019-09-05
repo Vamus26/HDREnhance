@@ -6,6 +6,7 @@ example = 'hdr_backward';%'BWD_LDR093_099_HDR093_099_SUMMED_FORWARD';
 
 % load the two frames
 
+
 im3 = hdrimread('clip_000007.000202.exr');%hdrimread('br-00058.hdr');%im2double(imread('hdr-00093.tif'));
 im4 = hdrimread('clip_000007.000205.exr');%hdrimread('br-00066.hdr');%im2double(imread('hdr-00099.tif'));
 im1 = tonemap(hdrimread('clip_000007.000202.exr'));%'br-00058_pregamma_1_reinhard05_brightness_-10_chromatic_adaptation_0_light_adaptation_1.jpg');%im2double(imread('l093.jpg'));
