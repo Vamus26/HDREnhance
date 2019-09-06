@@ -4,17 +4,18 @@ close all
 
 % read images
 %wlImage = hdrimread('flooowhdr_forward.hdr');
-wlImage = hdrimread('clip_000007.000204.exr');%forw image
-fi = tonemap(hdrimread('clip_000007.000205.exr'));%simulated LDR frame
+wlImage = hdrimread('resultExtraFWD.hdr');%forw image
+fi = tonemap(hdrimread('clip_000007.000204.exr'));%simulated LDR frame
 %wrImage = hdrimread('flooowhdr_back.hdr');
-wrImage = hdrimread('clip_000007.000206.exr');%backw image
+wrImage = hdrimread('resultExtraBWD.hdr');%backw image
 wlImageTone = tonemap(wlImage);%forw image tonemapped
 wrImageTone = tonemap(wrImage);%backw image tonemapped
-load('motion_conf_200_210_forward.mat');
-%image index
-frame_index_wl = 0;
-frame_index_fi = 5;
-frame_index_wr = 10;
+load('moco_02_04_fwd.mat');
+load('moco_06_04_bwd.mat');
+%image index %TODO set correct
+frame_index_wl = 2;
+frame_index_fi = 4;
+frame_index_wr = 6;
 
 k = 3;%# different labels
 
@@ -26,12 +27,12 @@ for rows=1:size(fi,1)
     for cols=1:size(fi,2)
       eukl = double(wlImageTone(rows,cols) - fi(rows,cols));
       Dc_2 = norm(eukl);
-      Df = motion_conf(rows,cols);%%1-1;%TODO change motion_confidence(wl(indx));
+      Df = motion_conf_fwd(rows,cols);%%1-1;%TODO change motion_confidence(wl(indx));
       Dd = abs(frame_index_wl-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
       Dc_new(rows,cols,1)=Dc_2+Df+Dd;
       %motion conf new, next 2 lines
-      load('motion_conf_200_210_backward.mat');
-      Df = motion_conf(rows,cols);
+      %load('motion_conf_200_210_backward.mat');
+      Df = motion_conf_bwd(rows,cols);
       eukl = double(wrImageTone(rows,cols) - fi(rows,cols));
       Dc_2 = norm(eukl);
       Dd = abs(frame_index_wr-frame_index_fi) / abs(frame_index_wr-frame_index_wl);
