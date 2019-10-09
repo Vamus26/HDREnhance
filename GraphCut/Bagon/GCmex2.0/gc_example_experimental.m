@@ -3,17 +3,17 @@ function gc_example()
 close all
 
 % read images
-wlImage = hdrimread('resultExtraFWD3.hdr');%forw image
+wlImage = hdrimread('resultExtraFWD10.hdr');%forw image
 fi = tonemap(hdrimread('clip_000007.000204.exr'));%simulated LDR frame
-wrImage = hdrimread('resultExtraBWD3.hdr');%backw image
+wrImage = hdrimread('resultExtraBWD10.hdr');%backw image
 wlImageTone = tonemap(wlImage);%forw image tonemapped
 wrImageTone = tonemap(wrImage);%backw image tonemapped
-load('moco_01_04_fwd.mat');
-load('moco_07_04_bwd.mat');
+load('moco_94_04_fwd.mat');
+load('moco_14_04_bwd.mat');
 %image index
-frame_index_wl = 1;
-frame_index_fi = 4;
-frame_index_wr = 7;
+frame_index_wl = 4;
+frame_index_fi = 14;
+frame_index_wr = 24;
 
 k = 3;%# different labels
 
@@ -93,8 +93,8 @@ for rows=1:size(Dc_new,1)
     end
 end
 rgb = tonemap(mix);
-imwrite(rgb, 'mixrgb_with_extract_1frame3.jpg');
-hdrimwrite(mix, 'mixim_with_extract_1frame3.hdr');
+imwrite(rgb, 'mixrgb_with_extract_1frame10.jpg');
+hdrimwrite(mix, 'mixim_with_extract_1frame10.hdr');
 
 %---------------- Aux Functions ----------------%
 function ih = PlotLabels(L)
