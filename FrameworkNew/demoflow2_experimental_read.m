@@ -26,10 +26,26 @@ nInnerFPIterations = 1;
 nSORIterations = 30;
 para = [alpha,ratio,minWidth,nOuterFPIterations,nInnerFPIterations,nSORIterations];
 
-if exist('vx','var')
-x=12;
+for count=1:amount
+    
+    tmpC = sprintf('HdrA.H_%d',count);
+    tmpD = sprintf('LdrA.L_%d',count);
+    imag1 = eval(tmpC);%access struct element
+    LdrStack(count,:,:,:) = eval(tmpD);
+    if imag1~=0
+     if ~exist('firstHdr','var')
+        firstHdr = imag1;
+     elseif ~exist('secondHdr','var')
+        secondHdr = imag1;
+        doFlowCalculation(firstHdr,secondHdr,LdrStack); %TODO implement
+       firstHdr =secondHdr;
+       clear secondHdr;
+       clear LdrStack;
+     end
+    end
 end
-imag1 = HdrA.H_1;%access struct element
+
+size(LdrStack,1);%amount LDR frames
 
 
 L194 = tonemap(hdrimread('clip_000007.000194.exr'));
@@ -280,6 +296,7 @@ end
 rgb = tonemap(mix);
 imwrite(rgb, 'mixrgb_with_extract_1frame10.jpg');
 hdrimwrite(mix, 'mixim_with_extract_1frame10.hdr');
+end
 
 %---------------- Aux Functions ----------------%
 function ih = PlotLabels(L)
@@ -295,7 +312,7 @@ ih = imagesc(LL);
 set(ih, 'AlphaData', Am);
 colorbar;
 colormap 'jet';
-
+end
 %-----------------------------------------------%
 %unused so far
 function [cost_mat] = myCostFunc(pxl,label)
@@ -314,7 +331,7 @@ function [cost_mat] = myCostFunc(pxl,label)
         cost_mat(pxl)=Dc+Df+Dd;
     end
 %-----------------------------------------------%
-
+end
 function [cost_mat] = smoothCostGrad(s1r,s1g,s1b,s2r,s2g,s2b,t1r,t1g,t1b,t2r,t2g,t2b)
 	gradTextR  = abs( s1r - t1r );
 	gradTextV  = abs( s1g - t1g );
@@ -333,5 +350,37 @@ function [cost_mat] = smoothCostGrad(s1r,s1g,s1b,s2r,s2g,s2b,t1r,t1g,t1b,t2r,t2g
 	tmp =( ( cr + cg + cb ) / 3.0 );
     
 	cost_mat = (tmp/ sqrt(grad));  
+end    
+function [] =doFlowCalculation(firstHdr,secondHdr,LdrStack)
+  
+   maximumLDR =size(LdrStack,1);%amount LDR frames 
+   for idx=1:maximumLDR
+    [vx,vy,~] = Coarse2FineTwoFrames(LdrStack(idx,:,:,:),LdrStack(idx+1,:,:,:),para);%fwd
+	vx_2 = vx;
+	vy_2 = vy;
+    clear vx;
+    clear vy;
+    [vxb,vyb,~] = Coarse2FineTwoFrames(LdrStack(maximumLDR+1-idx,:,:,:),LdrStack(maximumLDR-idx,:,:,:),para);%bwd
+	vxb_2 = vxb;
+	vyb_2 = vyb;
+    clear vxb;
+    clear vyb;
+    [BWDImage, FWDImage, moco_bwd, moco_fwd] =createHDR(hdrImage,vx_2,vy_2,vxb_2,vyb_2);
     
+    %if idx+1==maximum-idx%TODO rethink if necessary
+    %    break;
+   % end
+   end
+end
 
+function [BWDImage, FWDImage, moco_bwd, moco_fwd] =createHDR(hdrImage,vx_1,vy_1,vxb_1,vyb_1)
+[x, y] = meshgrid(1:size(H214,2), 1:size(H214,1));
+redChannel = H214(:, :, 1);
+DR = interp2(redChannel, x-vx_2, y-vy_2);
+greenChannel = H214(:, :, 2);
+DG = interp2(greenChannel, x-vx_2, y-vy_2);
+blueChannel = H214(:, :, 3);
+DB = interp2(blueChannel, x-vx_2, y-vy_2);
+newRGBImage = cat(3, DR, DG, DB);
+hdrimwrite(newRGBImage, 'resultExtraBWD10.hdr');
+end
