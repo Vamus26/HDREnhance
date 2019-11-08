@@ -3,7 +3,7 @@ equi = hdrimread('pano1.hdr');
 
 % Close all figures and create cubic images
 close all;
-out = own_equi2cubic(equi, 500); % Set to 500 x 500
+out = own_equi2cubic(equi, 1920); % Set to 500 x 500
 
 % Now show all of the cube faces as a demonstration
 names = {'Front Face', 'Right Face', 'Back Face', 'Left Face', ...
