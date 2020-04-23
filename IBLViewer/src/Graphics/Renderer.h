@@ -1,0 +1,44 @@
+#ifndef INCLUDED_RENDERER
+#define INCLUDED_RENDERER
+
+#pragma once
+
+#include <Graphics/Camera.h>
+#include <Graphics/Shader.h>
+
+#include <Core/Entity.h>
+#include <Core/Renderable.h>
+#include <Core/Transform.h>
+
+#include <IO/ModelImporter.h>
+
+class Renderer
+{
+	Shader::Ptr defaultShader;
+	Shader::Ptr skyboxShader;
+	std::map<std::string, Shader::Ptr> shaders;
+
+	GL::UniformBuffer<Camera::UniformData> cameraUBO;
+	
+	Mesh::Ptr unitCube;
+	TextureCubeMap::Ptr cubeMap;
+	TextureCubeMap::Ptr irradianceMap;
+	TextureCubeMap::Ptr specularMap;
+	Texture2D::Ptr brdfLUT;
+	
+	std::vector<Entity::Ptr> rootEntitis;
+	std::vector<Entity::Ptr> entities;
+	unsigned int modelIndex = 0;
+
+public:
+	Renderer(unsigned int width, unsigned int height);
+	bool init(std::string modelFile, std::string panoFile);
+	void initShader();
+	void initEnvMaps(std::string panoFile);
+	void nextModel();
+	void updateAnimations(float dt);
+	void updateCamera(Camera& camera);
+	void render();
+};
+
+#endif // INCLUDED_RENDERER
