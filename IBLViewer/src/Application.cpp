@@ -1,4 +1,5 @@
 #include "Application.h"
+<<<<<<< HEAD
 #include <IO/GLTFImporter.h>
 #include <IO/ImageLoader.h>
 #include <IO/ShaderLoader.h>
@@ -6,6 +7,9 @@
 #include <fstream>
 #include <string>
 #include <Graphics/Renderer.h>
+=======
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 using namespace std::placeholders;
 
 Application::Application(const char* title, unsigned int width, unsigned int height) :
@@ -15,12 +19,17 @@ Application::Application(const char* title, unsigned int width, unsigned int hei
 	camera.setAspect((float)width / (float)height);
 }
 
+<<<<<<< HEAD
 bool Application::init(std::string modelFile,std::string videoFrames, std::string hdrFrames)//,  std::string panoFileNew)
+=======
+bool Application::init(std::string modelFile, std::string panoFile)
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 {
 	if (!window.isInitialized())
 		return false;
 	window.attachInput(input);
 
+<<<<<<< HEAD
 	//load frames from txtfile
 	std::string line;
 	std::ifstream myfile(videoFrames);
@@ -73,6 +82,13 @@ bool Application::init(std::string modelFile,std::string videoFrames, std::strin
 		filledSpecularMap.push_back(tmpStruct.specMaps);
 	}*/
 	
+=======
+	if (!renderer.init(modelFile, panoFile))
+		return false;
+
+	setupInput();
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	return true;
 }
 
@@ -88,17 +104,28 @@ void Application::setupInput()
 	input.addKeyCallback(GLFW_KEY_A, GLFW_RELEASE, std::bind(&Camera::releaseDirection, &camera, Camera::Direction::LEFT));
 	input.addKeyCallback(GLFW_KEY_D, GLFW_RELEASE, std::bind(&Camera::releaseDirection, &camera, Camera::Direction::RIGHT));
 	input.setMouseCallback(std::bind(&Camera::updateRotation, &camera, _1, _2));
+<<<<<<< HEAD
+=======
+
+	input.addKeyCallback(GLFW_KEY_R, GLFW_PRESS, std::bind(&Renderer::nextModel, &renderer));
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 }
 
 void Application::loop()
 {
 	double dt = 0.0;
 	double animTime = 0.0f;
+<<<<<<< HEAD
 	double tickTime = 1.0f / 30.0f;
 	double updateTime = 0.0f;
 	int frames = 0;
 	int frameCounter = -1;
 
+=======
+	double tickTime = 1.0f / 60.0f;
+	double updateTime = 0.0f;
+	int frames = 0;
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	while (!window.shouldClose())
 	{
 		double startTime = glfwGetTime();
@@ -113,6 +140,7 @@ void Application::loop()
 
 			renderer.updateAnimations(startTime);
 			animTime = 0.0f;
+<<<<<<< HEAD
 			if (frameCounter >= (filledCubeMaps.size()-1))
 			{
 				frameCounter = -1;
@@ -125,6 +153,8 @@ void Application::loop()
 		//	renderer.loopHdrs(cubemaps[frameCounter]);
 			frameCounter++;
 			
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 		}
 
 		//camera.move(dt);
@@ -132,6 +162,7 @@ void Application::loop()
 
 		//renderer.updateCamera(camera);
 		//renderer.updateAnimations(startTime);
+<<<<<<< HEAD
 		
 		if (frameCounter == -1)
 			frameCounter++;
@@ -139,6 +170,10 @@ void Application::loop()
 		
 		
 		
+=======
+		renderer.render();
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 		window.swapBuffers();
 
 		dt = glfwGetTime() - startTime;
@@ -151,7 +186,10 @@ void Application::loop()
 			window.setWindowTitle(title);
 			updateTime = 0.0;
 			frames = 0;
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 		}
 		else
 		{

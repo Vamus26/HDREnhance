@@ -13,6 +13,7 @@ Camera::Camera()
 void Camera::init(glm::vec3 pos, glm::vec3 direction, glm::vec3 up, float fov, float aspect, float zNear, float zFar)
 {
 	this->position = pos;
+<<<<<<< HEAD
 
 	this->position.x = -0.79f;
 	this->position.y = 1.36f;
@@ -21,6 +22,8 @@ void Camera::init(glm::vec3 pos, glm::vec3 direction, glm::vec3 up, float fov, f
     //pitch = 0.0f;
 	yaw = -69.2f;
 	pitch = -34.9f;
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	this->direction = direction;
 	this->up = up;
 	this->right = glm::normalize(glm::cross(direction, up));
@@ -35,6 +38,11 @@ void Camera::init(glm::vec3 pos, glm::vec3 direction, glm::vec3 up, float fov, f
 		directions[i] = false;
 	}
 
+<<<<<<< HEAD
+=======
+	yaw = -90.0f;
+	pitch = 0.0f;
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	movementSpeed = 1.0f;
 	rotationSpeed = 0.1f;
 }
@@ -57,7 +65,10 @@ glm::mat4 Camera::getViewProjectionMatrix() const
 void Camera::setDirection(Direction dir)
 {
 	directions[dir] = true;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 }
 
 void Camera::releaseDirection(Direction dir)
@@ -75,7 +86,10 @@ void Camera::move(float deltaTime)
 			{
 			case FORWARD:
 				position += direction * deltaTime * movementSpeed;
+<<<<<<< HEAD
 				printf("fwd pos: %f,%f,%f", position.x, position.y, position.z);
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 				break;
 			case BACK:
 				position -= direction * deltaTime * movementSpeed;
@@ -105,8 +119,11 @@ void Camera::updateRotation(float dx, float dy)
 {
 	yaw += dx * rotationSpeed;
 	pitch += dy * rotationSpeed;
+<<<<<<< HEAD
 	printf("yaw:%f", yaw);
 	printf("pitch:%f", pitch);
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 }
 
 void Camera::rotate(float deltaTime)

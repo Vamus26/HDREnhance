@@ -14,8 +14,12 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+<<<<<<< HEAD
 #include <stdlib.h> 
 #include <Windows.h>
+=======
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 #include <rapidjson/document.h>
 #include <rapidjson/filereadstream.h>
 
@@ -45,8 +49,12 @@ bool Renderer::init(std::string modelFile, std::string panoFile)
 	glViewport(0, 0, 1280, 720);
 	//glEnable(GL_DEBUG_OUTPUT);
 	//glDebugMessageCallback(debugCallback, 0);
+<<<<<<< HEAD
 	panoFileNew = panoFile;
 	panoFileOld = panoFile;
+=======
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	initShader();
 	initEnvMaps(panoFile);
 
@@ -62,6 +70,7 @@ bool Renderer::init(std::string modelFile, std::string panoFile)
 	return true;
 }
 
+<<<<<<< HEAD
 
 void Renderer::loopVideo(Texture2D::Ptr pano) {
 		pano2cmShader->use();
@@ -283,6 +292,8 @@ Renderer::ReturnMaps Renderer::initCubeMaps(Texture2D::Ptr pano, Texture2D::Ptr 
 	return retMap;
 }
 
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 void Renderer::initShader()
 {
 	std::string shaderPath = "src/Shaders";
@@ -308,9 +319,15 @@ void Renderer::initShader()
 
 void Renderer::initEnvMaps(std::string panoFile)
 {
+<<<<<<< HEAD
 	pano2cmShader = shaders["PanoToCubeMap"];
 	irradianceShader = shaders["IBLDiffuseIrradiance"];
 	specularShader = shaders["IBLSpecular"];
+=======
+	auto pano2cmShader = shaders["PanoToCubeMap"];
+	auto irradianceShader = shaders["IBLDiffuseIrradiance"];
+	auto specularShader = shaders["IBLSpecular"];
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	auto integrateBRDFShader = shaders["IBLIntegrateBRDF"];
 
 	auto pano = IO::loadTextureHDR(panoFile);
@@ -339,6 +356,7 @@ void Renderer::initEnvMaps(std::string panoFile)
 		cubeMap->generateMipmaps();
 		cubeMap->setFilter(GL::LINEAR_MIPMAP_LINEAR);
 
+<<<<<<< HEAD
 		/*auto */envFBO = Framebuffer::create(size, size);
 		envFBO->addRenderTexture(GL::COLOR0, cubeMap);
 		envFBO->checkStatus();//check ob FBO in ordnung
@@ -468,11 +486,18 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemo(std::string panoFile)
 		envFBO->addRenderTexture(GL::COLOR0, cubeMap);
 		envFBO->checkStatus();//check ob FBO in ordnung
 		envFBO->begin(); //setzt FBO als primäres renderobjekt
+=======
+		auto envFBO = Framebuffer::create(size, size);
+		envFBO->addRenderTexture(GL::COLOR0, cubeMap);
+		envFBO->checkStatus();
+		envFBO->begin();
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 		pano->use(0);
 		unitCube->draw();
 		envFBO->end();
 
 		cubeMap->generateMipmaps();
+<<<<<<< HEAD
 		//cubemap bereit
 		//vector.pushback mit cubemaps + probes
 		//fbo nicht speichern nur zum anlegen
@@ -481,6 +506,8 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemo(std::string panoFile)
 		//nachpushback kann man whsl die HDR frames clearn
 		//offline speichern, auf festplatte und dann cubemape laden
 		//benötigt lib. vllt in zukunft
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	}
 
 	irradianceShader->setUniform("VP[0]", VP);
@@ -497,8 +524,11 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemo(std::string panoFile)
 		cubeMap->use(0);
 		unitCube->draw();
 		irrFBO->end();
+<<<<<<< HEAD
 
 		//irr MAp pushback
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	}
 
 	specularShader->setUniform("VP[0]", VP);
@@ -511,17 +541,25 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemo(std::string panoFile)
 		specularMap->generateMipmaps();
 		specularMap->setFilter(GL::LINEAR_MIPMAP_LINEAR);
 
+<<<<<<< HEAD
 		/*auto */specFBO = Framebuffer::create(size, size);
 		maxMipLevel = 8;
 
+=======
+		auto specFBO = Framebuffer::create(size, size);
+		unsigned int maxMipLevel = 8;
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 		for (unsigned int mip = 0; mip < maxMipLevel; mip++)
 		{
 			unsigned int mipWidth = size * std::pow(0.5, mip);
 			unsigned int mipHeight = size * std::pow(0.5, mip);
 			float roughness = (float)mip / (float)(maxMipLevel - 1);
+<<<<<<< HEAD
 			mipWidthVector.push_back(mipWidth);
 			mipHeightVector.push_back(mipHeight);
 			roughnessVector.push_back(roughness);
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 			specularShader->setUniform("roughness", roughness);
 
 			specFBO->resize(mipWidth, mipHeight);
@@ -530,6 +568,7 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemo(std::string panoFile)
 			cubeMap->use(0);
 			unitCube->draw();
 			specFBO->end();
+<<<<<<< HEAD
 
 
 		}
@@ -667,6 +706,13 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemoHdr(std::string panoFile)
 
 	glEnable(GL_DEPTH_TEST);
 	//einmalig
+=======
+		}
+	}
+
+	glEnable(GL_DEPTH_TEST);
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	auto screenQuad = Primitives::createQuad(glm::vec3(0.0f), 2.0f);
 
 	{
@@ -683,11 +729,14 @@ Renderer::ReturnMaps Renderer::initEnvMapsDemoHdr(std::string panoFile)
 	}
 
 	glViewport(0, 0, 1280, 720);
+<<<<<<< HEAD
 	ReturnMaps retMap;
 	retMap.ldrCubeMaps = cubeMap;
 	retMap.irrMaps = irradianceMap;
 	retMap.specMaps = specularMap;
 	return retMap;
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 }
 
 void Renderer::updateAnimations(float dt)
@@ -777,6 +826,7 @@ void Renderer::render()
 	cubeMap->use(0);
 	unitCube->draw();
 }
+<<<<<<< HEAD
 void Renderer::renderNew(TextureCubeMap::Ptr ldrCubeMaps, TextureCubeMap::Ptr irrMaps, TextureCubeMap::Ptr specMaps)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -825,3 +875,5 @@ void Renderer::renderNew(TextureCubeMap::Ptr ldrCubeMaps, TextureCubeMap::Ptr ir
 	cubeMap->use(0);
 	unitCube->draw();
 }
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5

@@ -9,8 +9,14 @@
 #include <Core/Entity.h>
 #include <Core/Renderable.h>
 #include <Core/Transform.h>
+<<<<<<< HEAD
 #include <IO/ModelImporter.h>
 #include <Graphics/Framebuffer.h>
+=======
+
+#include <IO/ModelImporter.h>
+
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 class Renderer
 {
 	Shader::Ptr defaultShader;
@@ -21,6 +27,7 @@ class Renderer
 	
 	Mesh::Ptr unitCube;
 	TextureCubeMap::Ptr cubeMap;
+<<<<<<< HEAD
 	TextureCubeMap::Ptr cubeMapHdr;
 	TextureCubeMap::Ptr irradianceMap;
 	TextureCubeMap::Ptr specularMap;
@@ -49,6 +56,17 @@ public:
 	struct ReturnMaps {
 		TextureCubeMap::Ptr ldrCubeMaps; TextureCubeMap::Ptr irrMaps; TextureCubeMap::Ptr specMaps; TextureCubeMap::Ptr hdrCubeMaps;
 	};
+=======
+	TextureCubeMap::Ptr irradianceMap;
+	TextureCubeMap::Ptr specularMap;
+	Texture2D::Ptr brdfLUT;
+	
+	std::vector<Entity::Ptr> rootEntitis;
+	std::vector<Entity::Ptr> entities;
+	unsigned int modelIndex = 0;
+
+public:
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 	Renderer(unsigned int width, unsigned int height);
 	bool init(std::string modelFile, std::string panoFile);
 	void initShader();
@@ -57,6 +75,7 @@ public:
 	void updateAnimations(float dt);
 	void updateCamera(Camera& camera);
 	void render();
+<<<<<<< HEAD
 	void loopVideo(Texture2D::Ptr activeHdr);
 	void loopVideoAndHdr(Texture2D::Ptr activeVideoFrame, Texture2D::Ptr activeHdr);
 	void loopVideoAndLdr(Texture2D::Ptr activeVideoFrame, Texture2D::Ptr activeHdr);
@@ -66,6 +85,8 @@ public:
 	ReturnMaps initEnvMapsDemo(std::string panoFile);
 	ReturnMaps initEnvMapsDemoHdr(std::string panoFile);
 	void renderNew(TextureCubeMap::Ptr ldrCubeMaps, TextureCubeMap::Ptr irrMaps, TextureCubeMap::Ptr specMaps );
+=======
+>>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5
 };
 
 #endif // INCLUDED_RENDERER
