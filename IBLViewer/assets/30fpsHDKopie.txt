@@ -1,0 +1,10 @@
+./assets/30fps_1.hdr
+./assets/flowHD2.hdr
+./assets/flowHD3.hdr
+./assets/30fps_4.hdr
+./assets/flowHD5.hdr
+./assets/flowHD6.hdr
+./assets/30fps_7.hdr
+./assets/flowHD8.hdr
+./assets/flowHD9.hdr
+./assets/30fps_10.hdr
