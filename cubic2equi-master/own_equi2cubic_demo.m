@@ -1,17 +1,17 @@
 % Read in the image
 %equi = hdrimread('pano_end.hdr');
-equi = imread('panos-00617.jpg');
+equi = imread('ldrframe-00001.png');
 % Close all figures and create cubic images
 close all;
-out = own_equi2cubic(equi, 1920); % Set to 500 x 500
+out = own_equi2cubic(equi, 960); % Set to 500 x 500
 
 % Now show all of the cube faces as a demonstration
 names = {'Front Face', 'Right Face', 'Back Face', 'Left Face', ...
     'Top Face', 'Bottom Face'};
 %names_to_save = {'cube_front617.hdr', 'cube_right617.hdr', 'cube_back617.hdr', ...
 %    'cube_left617.hdr', 'cube_top617.hdr', 'cube_bottom617.hdr'};
-names_to_save = {'cube_front617.jpg', 'cube_right617.jpg', 'cube_back617.jpg', ...
-    'cube_left617.jpg', 'cube_top617.jpg', 'cube_bottom617.jpg'};
+names_to_save = {'ldrframe-00001_front.png', 'ldrframe-00001_right.png', 'ldrframe-00001_back.png', ...
+    'ldrframe-00001_left.png', 'ldrframe-00001_top.png', 'ldrframe-00001_bottom.png'};
 
 % Show original equirectangular image
 %figure;

@@ -1,7 +1,8 @@
 function [out] = own_cubic2equi(top, bottom, left, right, front, back)
 
 % Height and width of equirectangular image
-height = size(top, 1);
+height = size(top, 1)
+%height=1920;
 width = 2*height;
 
 % Flags to denote what side of the cube we are facing
