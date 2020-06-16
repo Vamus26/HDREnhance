@@ -16,12 +16,8 @@ select configuration Release x64 and Build Solution
 Running
 -------
 run from <IBLViewer_root> path
-<<<<<<< HEAD
 command: ./build/Release/IBLViewer.exe ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/Newport_Loft_Ref.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/blackbot.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/matlabcomp020_blackbot.hdr ./assets/Newport_Loft_Ref.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/matlabcomp020_blackbot.hdr ./assets/kitchenvid-00020.png
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/videoFrames.txt ./assets/hdrFrames.txt
-=======
-command: ./build/Release/IBLViewer.exe ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/Newport_Loft_Ref.hdr
->>>>>>> 5302a5fef9735646a13a986f336553b17cd0cab5

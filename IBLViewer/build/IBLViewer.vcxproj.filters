@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Application.cpp" />
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Animator.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Component.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Entity.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Renderable.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Transform.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLProgram.cpp">
+      <Filter>GL</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Animation.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Camera.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Framebuffer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Geometry.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Material.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Mesh.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Primitives.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Renderer.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Shader.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\GLTFImporter.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ImageLoader.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ModelImporter.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ShaderLoader.cpp">
+      <Filter>IO</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Platform\GLWindow.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Platform\InputHandler.cpp">
+      <Filter>Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Application.h" />
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Animator.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Component.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Entity.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Renderable.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Core\Transform.h">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLBuffer.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLFramebuffer.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLProgram.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLShader.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLTexture.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\GL\GLVertexArray.h">
+      <Filter>GL</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Animation.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Camera.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Framebuffer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Geometry.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Material.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Mesh.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Primitives.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Renderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Shader.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Graphics\Texture.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\GLTFImporter.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ImageLoader.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ModelImporter.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\IO\ShaderLoader.h">
+      <Filter>IO</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Platform\GLWindow.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Platform\InputHandler.h">
+      <Filter>Platform</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\BRDF.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Camera.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Default.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Default.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLDiffuseIrradiance.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLDiffuseIrradiance.geom">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLDiffuseIrradiance.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLIntegrateBRDF.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLIntegrateBRDF.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLSpecular.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLSpecular.geom">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\IBLSpecular.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Material.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\PanoToCubeMap.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\PanoToCubeMap.geom">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\PanoToCubeMap.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Skybox.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Skybox.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Unlit.frag">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Unlit.vert">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="C:\Users\LukasNew\Desktop\Masterarbeit\hdr_enhance-master-IBLViewer\hdr_enhance-master-IBLViewer\IBLViewer\src\Shaders\Utils.glsl">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{953F2632-9363-39DE-A7E0-4C0F79E86C03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GL">
+      <UniqueIdentifier>{CCECD5E8-2CE8-32A0-A37B-50DC8C348D4B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{FBA27A85-0CD2-3DA1-B1AB-BC4D962244BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IO">
+      <UniqueIdentifier>{C542C5B6-FBEF-33CA-A94F-C7282D425EAA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{EA742BB4-697A-36A7-BBA4-F6D018A87C22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{4E8C3CB1-5730-301B-996C-34C6A6886F27}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+"./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/newmovieLDR.txt ./assets/newMovieHDR.txt
