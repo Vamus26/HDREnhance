@@ -63,9 +63,12 @@ public:
 	ReturnMaps initCubeMaps(Texture2D::Ptr activeVideoFrame, Texture2D::Ptr activeHdr);
 	void displayVideo(TextureCubeMap::Ptr ldrCubeMaps);
 	void displayLighting(TextureCubeMap::Ptr irrMaps, TextureCubeMap::Ptr specMaps);
-	ReturnMaps initEnvMapsDemo(std::string panoFile);
-	ReturnMaps initEnvMapsDemoHdr(std::string panoFile);
+	ReturnMaps initEnvMapsForLDR(std::string panoFile);
+	ReturnMaps initEnvMapsForHDR(std::string panoFile);
+	//ReturnMaps initEnvMapsDemoHdr(std::string panoFile);
+	ReturnMaps initCubeMapLDR(std::string panoFile);
 	void renderNew(TextureCubeMap::Ptr ldrCubeMaps, TextureCubeMap::Ptr irrMaps, TextureCubeMap::Ptr specMaps );
+	void renderOnlyLDR(TextureCubeMap::Ptr ldrCubeMaps);
 };
 
 #endif // INCLUDED_RENDERER

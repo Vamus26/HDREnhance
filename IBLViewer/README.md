@@ -16,8 +16,16 @@ select configuration Release x64 and Build Solution
 Running
 -------
 run from <IBLViewer_root> path
-command: ./build/Release/IBLViewer.exe ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/Newport_Loft_Ref.hdr
+command: "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/Newport_Loft_Ref.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/blackbot.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/matlabcomp020_blackbot.hdr ./assets/Newport_Loft_Ref.hdr
 "./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/matlabcomp020_blackbot.hdr ./assets/kitchenvid-00020.png
-"./build/Release/IBLViewer.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/videoFrames.txt ./assets/hdrFrames.txt
+"./build/Release/IBLViewer_try.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/videoFrames.txt ./assets/hdrFrames.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsLDKopie.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/ikea/scene.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsHDKopie.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/DamagedHelmet/DamagedHelmet.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsHDKopie.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/TOP5/6th/scene.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsHDKopie.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/TOP5/Corset/Corset.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsHDKopie.txt
+"./build/Release/IBLViewer_HDR.exe" ./assets/TOP5/Duck/Duck.gltf ./assets/30fpsLDKopie.txt ./assets/30fpsHDKopie.txt
+
+1280x720

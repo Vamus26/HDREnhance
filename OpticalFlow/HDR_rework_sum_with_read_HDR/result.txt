@@ -1,2 +1,0 @@
-max von 4 = 554 vx  vy=985
-max von 1 = 926 vy = 1476

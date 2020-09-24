@@ -1,10 +1,2 @@
-./assets/30fps_1.png
-./assets/30fps_2.png
-./assets/30fps_3.png
-./assets/30fps_4.png
-./assets/30fps_5.png
-./assets/30fps_6.png
-./assets/30fps_7.png
-./assets/30fps_8.png
-./assets/30fps_9.png
-./assets/30fps_10.png
+./assets/black.hdr
+./assets/black.hdr

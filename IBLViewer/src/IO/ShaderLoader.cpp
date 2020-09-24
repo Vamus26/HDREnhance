@@ -3,7 +3,9 @@
 #include <filesystem>
 #include <fstream>
 #include <sstream>
-
+#ifndef _WIN32
+	#include <C:\Users\LukasNew\AppData\Local\Android\Sdk\ndk\21.0.6113669\toolchains\llvm\prebuilt\windows-x86_64\sysroot\usr\include\android\asset_manager.h>
+#endif 
 namespace fs = std::filesystem;
 
 namespace IO
@@ -64,6 +66,8 @@ namespace IO
 
 	std::vector<std::string> getAllFileNames(const std::string& path, const std::string& extension)
 	{
+	#ifdef _WIN32
+
 		if (!fs::exists(path))
 			std::cout << "path " << path << " does not exist!" << std::endl;
 
@@ -91,8 +95,43 @@ namespace IO
 			}
 		}
 		return fileNames;
-	}
+	#endif //WIN32
+	/*
+		AAssetDir* assetDir = AAssetManager_openDir(asset_manager_, path.c_str());//""
+		const char* filename = (const char*)NULL;
+		while ((filename = AAssetDir_getNextFileName(assetDir)) != NULL) 
+		{
+			AAsset* asset = AAssetManager_open(asset_manager_, filename, AASSET_MODE_STREAMING);
+			char buf[BUFSIZ];
+			int nb_read = 0;
+			FILE* out = fopen(filename, "w");
+			while ((nb_read = AAsset_read(asset, buf, BUFSIZ)) > 0)
+				fwrite(buf, nb_read, 1, out);
+			fclose(out);
+			AAsset_close(asset);
+		}*/
+	/*	AAssetDir_close(assetDir);
+		AAssetManager* assetManager = getApplicationContext().getAssets();
+		for (std::string file : assetManager.list("")) {
+			if (file.endsWith(".txt"))
+				items.add(file);
+		}*/
 
+	//	loadShaderCode(asset_manager_, path);
+		std::cout << "This is not Windows." << std::endl;
+
+	}
+	/*
+	std::string loadShaderCode(AAssetManager* assetManager, std::string fileName)
+	{
+		AAsset* asset = AAssetManager_open(assetManager, fileName.c_str(), AASSET_MODE_BUFFER);
+		unsigned int len = AAsset_getLength(asset);
+		std::vector<char> buffer(len + 1, '\0');
+		AAsset_read(asset, buffer.data(), len);
+		AAsset_close(asset);
+		return std::string(buffer.data()); //return inhalt vom shader (nur text)
+	}
+	*/
 	std::vector<Shader::Ptr> loadShadersFromPath(const std::string& path)
 	{
 		auto filenames = getAllFileNames(path); // check subdirectories...

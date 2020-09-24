@@ -1,0 +1,10 @@
+./assets/matlabcomp020_blackbot.hdr
+./assets/141-comp.hdr
+./assets/matlabcomp020_blackbot.hdr
+./assets/141-comp.hdr
+./assets/matlabcomp020_blackbot.hdr
+./assets/141-comp.hdr
+./assets/matlabcomp020_blackbot.hdr
+./assets/141-comp.hdr
+./assets/matlabcomp020_blackbot.hdr
+./assets/141-comp.hdr

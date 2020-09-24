@@ -41,8 +41,8 @@ bool Application::init(std::string modelFile,std::string videoFrames, std::strin
 		while (getline(myfileHDR, line))
 		{
 			frameNamesHdr.push_back(line);
-		//	hdrMaps.push_back(IO::loadTextureHDR(line));
-		}
+		//	hdrMaps.push_back(IO::loadTextureHDR(line));//beleuchtung 2 fkt 1x ldr beleuchtung, 1x hdr beleuchtung größe x6 x formatx float format bei textur.
+		}//skybox shader tonemapping entfernen bei LDR oder skybox shader für ldr
 		myfileHDR.close();
 	}
 	else std::cout << "Unable to open file 2";
@@ -50,28 +50,27 @@ bool Application::init(std::string modelFile,std::string videoFrames, std::strin
 	if (!renderer.init(modelFile, frameNames[0]))
 		return false;
 	setupInput();
-	for(int i =0;i<frameNames.size();i++) {
-	Renderer::ReturnMaps tmpStruct = renderer.initEnvMapsDemo(frameNames[i]);
-	filledCubeMaps.push_back(tmpStruct.ldrCubeMaps);
-	//uncomment if LDR only
-	/*filledIrradianceMap.push_back(tmpStruct.irrMaps);
-	filledSpecularMap.push_back(tmpStruct.specMaps);*/
-
-	Renderer::ReturnMaps tmpStruct2 = renderer.initEnvMapsDemo(frameNamesHdr[i]);
-	//comment if LDR video
-	filledIrradianceMap.push_back(tmpStruct2.irrMaps);
-	filledSpecularMap.push_back(tmpStruct2.specMaps);
-	//filledHdrCubeMaps.push_back(tmpStruct2.hdrCubeMaps);
-
+	for(int i =0;i<frameNames.size();i++) 
+	{
+		//if LDR only set to false
+		bool boolHDR = true;
+		if(boolHDR==false)
+		{
+			Renderer::ReturnMaps tmpStruct = renderer.initEnvMapsForLDR(frameNames[i]);
+			filledCubeMaps.push_back(tmpStruct.ldrCubeMaps);
+			filledIrradianceMap.push_back(tmpStruct.irrMaps);
+			filledSpecularMap.push_back(tmpStruct.specMaps);
+		}
+		else //HDR version
+		{
+			Renderer::ReturnMaps tmpStruct = renderer.initCubeMapLDR(frameNames[i]);
+			filledCubeMaps.push_back(tmpStruct.ldrCubeMaps);
+			Renderer::ReturnMaps tmpStruct2 = renderer.initEnvMapsForHDR(frameNamesHdr[i]);
+			filledIrradianceMap.push_back(tmpStruct2.irrMaps);
+			filledSpecularMap.push_back(tmpStruct2.specMaps);
+		}
 	}
-	
-	/*for(int i=0;i<cubemaps.size();i++) {
-		
-		Renderer::ReturnMaps tmpStruct= renderer.initCubeMaps(cubemaps[i], hdrMaps[i]);
-		filledCubeMaps.push_back(tmpStruct.ldrCubeMaps);
-		filledIrradianceMap.push_back(tmpStruct.irrMaps);
-		filledSpecularMap.push_back(tmpStruct.specMaps);
-	}*/
+
 	
 	return true;
 }
@@ -89,7 +88,14 @@ void Application::setupInput()
 	input.addKeyCallback(GLFW_KEY_D, GLFW_RELEASE, std::bind(&Camera::releaseDirection, &camera, Camera::Direction::RIGHT));
 	input.setMouseCallback(std::bind(&Camera::updateRotation, &camera, _1, _2));
 }
-
+void checkGLError()
+{
+	GLenum err;
+	while ((err = glGetError()) != GL_NO_ERROR) {
+		std::cout << err;
+		std::cout << "error";
+	}
+}
 void Application::loop()
 {
 	double dt = 0.0;
@@ -136,7 +142,7 @@ void Application::loop()
 		if (frameCounter == -1)
 			frameCounter++;
 		renderer.renderNew(filledCubeMaps[frameCounter], filledIrradianceMap[frameCounter], filledSpecularMap[frameCounter]);
-		
+		//renderer.renderOnlyLDR(filledCubeMaps[frameCounter]);
 		
 		
 		window.swapBuffers();
@@ -151,10 +157,11 @@ void Application::loop()
 			window.setWindowTitle(title);
 			updateTime = 0.0;
 			frames = 0;
-			
+			checkGLError();
 		}
 		else
 		{
+			checkGLError();
 			frames++;
 		}
 	}
